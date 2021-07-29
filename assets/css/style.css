@@ -1,0 +1,35 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    background-color: gray;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.Container {
+    padding: 20px;
+
+}
+
+.Center {
+    text-align: center;
+    color: silver;
+}
+.Left {
+    text-align: left;
+}
+
+.Task {
+    background-color: darkgray;
+    margin: auto;
+    text-align: center;
+}
+
+.input_box {
+    padding: 10px;
+    text-align: left;
+}
+.out {
+    padding: 10px;
+    text-align: left;
+}

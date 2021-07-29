@@ -1,4 +1,4 @@
-// document.querySelector('button').onclick = palindrom;
+// document.querySelector('button').onclick = palindrom;  // устаревший код
 document.querySelector('.b-1').addEventListener('click', palindrom)
 
 function palindrom() {
