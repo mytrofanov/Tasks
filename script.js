@@ -11,6 +11,7 @@ but('.b-1', palindrom);
 but('.b-2', arr);
 but('.b-3', clean);
 but('.b-4', arr_for);
+but('.b-5', clean_arr_for);
 
 
 // Палиндром
@@ -41,4 +42,8 @@ function arr_for () {
     for (let i=0; i< a.length; i++) {
         document.querySelector('.arr_for').innerHTML += a[i] + '<span>' + ','
     }
+}
+
+function clean_arr_for (){
+    document.querySelector('.arr_for').innerHTML = null;
 }
