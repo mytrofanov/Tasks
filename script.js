@@ -10,6 +10,8 @@ let but = (sel, fun) => {
 but('.b-1', palindrom);
 but('.b-2', arr);
 but('.b-3', clean);
+but('.b-4', arr_for);
+
 
 // Палиндром
 function palindrom() {
@@ -31,4 +33,12 @@ function arr() {
 }
 function clean () {
     document.querySelector('.array_numbers').innerHTML = null;
+}
+
+//Вывести массив при помощи цикла for
+function arr_for () {
+    let a = [1,2,3,4,5]
+    for (let i=0; i< a.length; i++) {
+        document.querySelector('.arr_for').innerHTML += a[i] + '<span>' + ','
+    }
 }

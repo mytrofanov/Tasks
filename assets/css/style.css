@@ -15,26 +15,27 @@ body {
     text-align: center;
     color: silver;
 }
+
 .Left {
     text-align: left;
 }
 
 .Task {
     background-color: darkgray;
-    margin: auto;
-    text-align: center;
+    padding: 10px;
 }
 
 .input_box {
     padding: 10px;
     text-align: left;
 }
+
 .out {
     padding: 10px;
     text-align: left;
 }
 
 /*Кнопки*/
-.b-2 {
+.b-2, .b-4 {
     margin: 15px;
 }
