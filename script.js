@@ -16,6 +16,7 @@ but('.b-5', clean_arr_for);
 but('.b-6', multiplication);
 but('.b-7', obj);
 but('.b-8', string);
+but('.b-9', string_aaa);
 
 
 // Палиндром
@@ -83,4 +84,8 @@ function string () {
     }
 }
 
+function string_aaa () {
+    let str = 'aaa@bbb@ccc'
+    document.querySelector('.string_aaa').innerHTML = str.replaceAll('@','!')
+}
 
