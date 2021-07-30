@@ -17,6 +17,7 @@ but('.b-6', multiplication);
 but('.b-7', obj);
 but('.b-8', string);
 but('.b-9', string_aaa);
+but('.b-10', cut_string);
 
 
 // Палиндром
@@ -89,3 +90,11 @@ function string_aaa () {
     document.querySelector('.string_aaa').innerHTML = str.replaceAll('@','!')
 }
 
+function cut_string () {
+    let str = 'aaa bbb ccc'
+
+    document.querySelector('.cut_string').innerHTML = str.substr(4,3)+ '<br>'
+    document.querySelector('.cut_string').innerHTML += str.substring(4,7) + '<br>'
+    document.querySelector('.cut_string').innerHTML += str.slice(4,7) + '<br>'
+
+}
