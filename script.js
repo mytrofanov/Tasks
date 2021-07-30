@@ -14,6 +14,8 @@ but('.b-3', clean_array_numbers);
 but('.b-4', arr_for);
 but('.b-5', clean_arr_for);
 but('.b-6', multiplication);
+but('.b-7', obj);
+but('.b-8', string);
 
 
 // Палиндром
@@ -61,3 +63,24 @@ function multiplication () {
         document.querySelector('.multiplication_result').innerHTML = '='+ result;
     }
 }
+
+function obj () {
+    let city = {
+        'Минск':'Беларусь',
+        'Москва':'Россия',
+        'Киев':'Украина'
+    }
+        document.querySelector('.obj1').innerHTML = JSON.stringify(city);
+    }
+function string () {
+    let countries = {
+    'Минск':'Беларусь',
+    'Москва':'Россия',
+    'Киев':'Украина'
+}
+    for (let city in countries) {
+        document.querySelector('.strings').innerHTML += (city + ' это ' + countries[city] + '. ');
+    }
+}
+
+
