@@ -23,6 +23,8 @@ but('.b-9', string_aaa);
 but('.b-10', cut_string);
 getBut("bt-11", dataTransform);
 getBut("bt-12", unite_array);
+getBut("bt-13", arrAddFunc);
+
 
 
 // Палиндром
@@ -114,4 +116,10 @@ function unite_array() {
     let a = ['a', 'b', 'c']
     let b = [1, 2, 3]
     document.getElementById('united_arr').innerHTML=a.concat(b);
+}
+let arrForAdd = ['a','b','c']
+function arrAddFunc () {
+    arrForAdd.push(document.getElementById('arr_add').value)
+    document.getElementById('arr_add_result').innerHTML = arrForAdd;
+    document.getElementById('arr_add').value = '';
 }
