@@ -7,6 +7,9 @@
 let but = (sel, fun) => {
     document.querySelector(sel).addEventListener('click', fun)
 }
+let getBut = (id, fun) => {
+    document.getElementById(id).addEventListener('click', fun)
+}
 
 but('.b-1', palindrom);
 but('.b-2', arr);
@@ -18,6 +21,8 @@ but('.b-7', obj);
 but('.b-8', string);
 but('.b-9', string_aaa);
 but('.b-10', cut_string);
+getBut("bt-11", dataTransform);
+getBut("bt-12", unite_array);
 
 
 // Палиндром
@@ -56,45 +61,57 @@ function clean_arr_for() {
     document.querySelector('.arr_for').innerHTML = '';
 }
 
-function multiplication () {
-    let arr = [2,3,4,5];
+function multiplication() {
+    let arr = [2, 3, 4, 5];
     let result = 1;
-    for (let i=0; i<arr.length; i++) {
-        result *=arr[i];
+    for (let i = 0; i < arr.length; i++) {
+        result *= arr[i];
         document.querySelector('.multiplication').innerHTML = arr.join('*');
-        document.querySelector('.multiplication_result').innerHTML = '='+ result;
+        document.querySelector('.multiplication_result').innerHTML = '=' + result;
     }
 }
 
-function obj () {
+function obj() {
     let city = {
-        'Минск':'Беларусь',
-        'Москва':'Россия',
-        'Киев':'Украина'
+        'Минск': 'Беларусь',
+        'Москва': 'Россия',
+        'Киев': 'Украина'
     }
-        document.querySelector('.obj1').innerHTML = JSON.stringify(city);
-    }
-function string () {
-    let countries = {
-    'Минск':'Беларусь',
-    'Москва':'Россия',
-    'Киев':'Украина'
+    document.querySelector('.obj1').innerHTML = JSON.stringify(city);
 }
+
+function string() {
+    let countries = {
+        'Минск': 'Беларусь',
+        'Москва': 'Россия',
+        'Киев': 'Украина'
+    }
     for (let city in countries) {
         document.querySelector('.strings').innerHTML += (city + ' это ' + countries[city] + '. ');
     }
 }
 
-function string_aaa () {
+function string_aaa() {
     let str = 'aaa@bbb@ccc'
-    document.querySelector('.string_aaa').innerHTML = str.replaceAll('@','!')
+    document.querySelector('.string_aaa').innerHTML = str.replaceAll('@', '!')
 }
 
-function cut_string () {
+function cut_string() {
     let str = 'aaa bbb ccc'
+    document.querySelector('.cut_string').innerHTML = str.substr(4, 3) + '<br>'
+    document.querySelector('.cut_string').innerHTML += str.substring(4, 7) + '<br>'
+    document.querySelector('.cut_string').innerHTML += str.slice(4, 7) + '<br>'
+}
 
-    document.querySelector('.cut_string').innerHTML = str.substr(4,3)+ '<br>'
-    document.querySelector('.cut_string').innerHTML += str.substring(4,7) + '<br>'
-    document.querySelector('.cut_string').innerHTML += str.slice(4,7) + '<br>'
+// начиная с этой строки использую getElementById
+function dataTransform() {
+    let data = '2025-12-31'
+    let str = data.split('-')
+    document.getElementById('date_result').innerHTML = str[2] + '/' + str[1] + '/' + str[0];
+}
 
+function unite_array() {
+    let a = ['a', 'b', 'c']
+    let b = [1, 2, 3]
+    document.getElementById('united_arr').innerHTML=a.concat(b);
 }
