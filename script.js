@@ -24,7 +24,7 @@ let putVal = (id, val) => {
 //очистить значение
 let clearVal = (id) => {
     return (
-    document.getElementById(id).value = ''
+        document.getElementById(id).value = ''
     )
 }
 
@@ -46,6 +46,7 @@ getBut("bt-14", f14);
 getBut("bt-15", f15);
 getBut("bt-16", f16);
 getBut("bt-17", f17);
+getBut("bt-18", f18);
 
 
 // Палиндром
@@ -163,21 +164,29 @@ function f15() {
 }
 
 function f16() {
-    let str= getVal('i-16')
-    if (str.substr(0,7)=='http://') {
-        putVal('r-16','Верно.Строка начинается с http://')
-            } else {
+    let str = getVal('i-16')
+    if (str.substr(0, 7) == 'http://') {
+        putVal('r-16', 'Верно.Строка начинается с http://')
+    } else {
         putVal('r-16', 'Не верно. Строка не начинается с http://')
     }
     clearVal('r-16')
 }
 
 function f17() {
-    let str= getVal('i-17')
-    if (str.substr(-5)=='.html') {
-        putVal('r-17','Верно.Строка заканчивается на .html')
-            } else {
+    let str = getVal('i-17')
+    if (str.substr(-5) == '.html') {
+        putVal('r-17', 'Верно.Строка заканчивается на .html')
+    } else {
         putVal('r-17', 'Не верно. Строка не заканчивается на .html')
     }
     clearVal('r-17')
+}
+
+function f18() {
+    let arr = []
+    for (let i = 0; i < 10; i++) {
+        arr.push(Math.random().toFixed(2))
+    }
+    putVal('r-18', arr)
 }
