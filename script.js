@@ -47,6 +47,7 @@ getBut("bt-15", f15);
 getBut("bt-16", f16);
 getBut("bt-17", f17);
 getBut("bt-18", f18);
+getBut("bt-19", f19);
 
 
 // Палиндром
@@ -189,4 +190,12 @@ function f18() {
         arr.push(Math.random().toFixed(2))
     }
     putVal('r-18', arr)
+}
+
+function f19() {
+    let arr = []
+    for (let i = 0; i < 10; i++) {
+        arr.push(Math.round(Math.random()*10))
+    }
+    putVal('r-19', arr)
 }
