@@ -20,6 +20,9 @@ let getVal = (id) => {
 let putVal = (id, val) => {
     document.getElementById(id).innerHTML = val
 }
+let putValPlus = (id, val) => {
+    document.getElementById(id).innerHTML += val
+}
 
 //очистить значение
 let clearVal = (id) => {
@@ -193,9 +196,16 @@ function f18() {
 }
 
 function f19() {
+    document.getElementById('r-19-1').innerHTML=''
     let arr = []
     for (let i = 0; i < 10; i++) {
-        arr.push(Math.round(Math.random()*10))
+        arr.push(Math.round(Math.random() * 10))
     }
     putVal('r-19', arr)
+
+    for (let i = 0; i < 10; i++) {
+        if (arr[i] > 0 && arr[i] < 10) {
+            putValPlus('r-19-1', arr[i] + ',')
+        }
+    }
 }
