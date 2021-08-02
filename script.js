@@ -10,6 +10,20 @@ let but = (sel, fun) => {
 let getBut = (id, fun) => {
     document.getElementById(id).addEventListener('click', fun)
 }
+//получить значение
+let getVal = (id) => {
+    document.getElementById(id).value
+}
+//присвоить значение
+let putVal = (id,val) => {
+    document.getElementById(id).innerHTML = val;
+}
+//очистить значение
+let clearVal = (id) => {
+    document.getElementById(id).innerHTML.value = '';
+}
+
+
 
 but('.b-1', palindrom);
 but('.b-2', arr);
@@ -24,6 +38,7 @@ but('.b-10', cut_string);
 getBut("bt-11", dataTransform);
 getBut("bt-12", unite_array);
 getBut("bt-13", arrAddFunc);
+getBut("bt-14", f14);
 
 
 
@@ -123,3 +138,12 @@ function arrAddFunc () {
     document.getElementById('arr_add_result').innerHTML = arrForAdd;
     document.getElementById('arr_add').value = '';
 }
+
+function f14() {
+    let arr=document.getElementById('i-14').value
+    arr=arr[0].toUpperCase()+arr.substr(1).toLowerCase()
+    console.log(arr)
+    document.getElementById('r-14').innerHTML = arr;
+    document.getElementById('i-14').innerHTML.value = '';
+}
+
