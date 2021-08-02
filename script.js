@@ -44,6 +44,7 @@ getBut("bt-12", unite_array);
 getBut("bt-13", arrAddFunc);
 getBut("bt-14", f14);
 getBut("bt-15", f15);
+getBut("bt-16", f16);
 
 
 // Палиндром
@@ -158,4 +159,14 @@ function f15() {
     str = str.split('').reverse().join('');
     putVal('r-15', str);
     clearVal('i-15')
+}
+
+function f16() {
+    let str= getVal('i-16')
+    if (str.substr(0,7)=='http://') {
+        putVal('r-16','Верно.Строка начинается с http://')
+            } else {
+        putVal('r-16', 'Не верно. Строка не начинается с http://')
+    }
+    clearVal('r-16')
 }
