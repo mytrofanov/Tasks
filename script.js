@@ -45,6 +45,7 @@ getBut("bt-13", arrAddFunc);
 getBut("bt-14", f14);
 getBut("bt-15", f15);
 getBut("bt-16", f16);
+getBut("bt-17", f17);
 
 
 // Палиндром
@@ -169,4 +170,14 @@ function f16() {
         putVal('r-16', 'Не верно. Строка не начинается с http://')
     }
     clearVal('r-16')
+}
+
+function f17() {
+    let str= getVal('i-17')
+    if (str.substr(-5)=='.html') {
+        putVal('r-17','Верно.Строка заканчивается на .html')
+            } else {
+        putVal('r-17', 'Не верно. Строка не заканчивается на .html')
+    }
+    clearVal('r-17')
 }
