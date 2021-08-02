@@ -12,17 +12,21 @@ let getBut = (id, fun) => {
 }
 //получить значение
 let getVal = (id) => {
-    document.getElementById(id).value
+    return (
+        document.getElementById(id).value
+    )
 }
 //присвоить значение
-let putVal = (id,val) => {
-    document.getElementById(id).innerHTML = val;
-}
-//очистить значение
-let clearVal = (id) => {
-    document.getElementById(id).innerHTML.value = '';
+let putVal = (id, val) => {
+    document.getElementById(id).innerHTML = val
 }
 
+//очистить значение
+let clearVal = (id) => {
+    return (
+    document.getElementById(id).value = ''
+    )
+}
 
 
 but('.b-1', palindrom);
@@ -39,7 +43,7 @@ getBut("bt-11", dataTransform);
 getBut("bt-12", unite_array);
 getBut("bt-13", arrAddFunc);
 getBut("bt-14", f14);
-
+getBut("bt-15", f15);
 
 
 // Палиндром
@@ -53,6 +57,7 @@ function palindrom() {
     } else (
         document.querySelector('.conclusion').innerHTML = 'слова не равны'
     )
+    document.querySelector('.i-1').value = '';
 }
 
 // Массив от 1 до 7
@@ -130,20 +135,27 @@ function dataTransform() {
 function unite_array() {
     let a = ['a', 'b', 'c']
     let b = [1, 2, 3]
-    document.getElementById('united_arr').innerHTML=a.concat(b);
+    document.getElementById('united_arr').innerHTML = a.concat(b);
 }
-let arrForAdd = ['a','b','c']
-function arrAddFunc () {
+
+let arrForAdd = ['a', 'b', 'c']
+
+function arrAddFunc() {
     arrForAdd.push(document.getElementById('arr_add').value)
     document.getElementById('arr_add_result').innerHTML = arrForAdd;
     document.getElementById('arr_add').value = '';
 }
 
 function f14() {
-    let arr=document.getElementById('i-14').value
-    arr=arr[0].toUpperCase()+arr.substr(1).toLowerCase()
-    console.log(arr)
+    let arr = document.getElementById('i-14').value
+    arr = arr[0].toUpperCase() + arr.substr(1).toLowerCase()
     document.getElementById('r-14').innerHTML = arr;
-    document.getElementById('i-14').innerHTML.value = '';
+    clearVal('i-14')
 }
 
+function f15() {
+    let str = getVal('i-15');
+    str = str.split('').reverse().join('');
+    putVal('r-15', str);
+    clearVal('i-15')
+}
