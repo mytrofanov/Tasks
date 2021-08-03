@@ -53,6 +53,7 @@ getBut("bt-18", f18);
 getBut("bt-19", f19);
 getBut("i-22", f22);
 getBut("bt-20", f24);
+// getBut("bt-21", f25);
 
 
 // Палиндром
@@ -229,9 +230,9 @@ function f19() {
     }
     putVal('r-19-3', 'Сумма всех чисел массива:' + sum)
 
-    let sqSum=0;
+    let sqSum = 0;
     for (let f = 0; f < arrF19.length; f++) {
-        sqSum += arrF19[f]*arrF19[f]
+        sqSum += arrF19[f] * arrF19[f]
     }
     putVal('r-19-4', ' ' + sqSum)
 
@@ -251,6 +252,14 @@ function f24() {
     let input2 = document.getElementById('i-24-1')
     let input1value = input1.value
     let input2value = input2.value
-    input1.value=input2value
-    input2.value=input1value
+    input1.value = input2value
+    input2.value = input1value
+}
+
+function f25(elem) {
+
+    elem.value === 'Нажми на меня' ? elem.value = 'Зачем ты нажал?':elem.value = 'Нажми на меня'
+
+
+
 }
