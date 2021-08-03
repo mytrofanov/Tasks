@@ -227,4 +227,10 @@ function f19() {
     }
     putVal('r-19-3', 'Сумма всех чисел массива:' + sum)
 
+    let sqSum=0;
+    for (let f = 0; f < arrF19.length; f++) {
+        sqSum += arrF19[f]*arrF19[f]
+    }
+    putVal('r-19-4', ' ' + sqSum)
+
 }
