@@ -239,5 +239,8 @@ function f19() {
 }
 
 function f22() {
-    document.getElementById('i-22').value = 'новый текст'
+    let input = document.getElementById('i-22')
+    alert('старое значение: ' + input.value)
+    input.value = 'новый текст'
+
 }
