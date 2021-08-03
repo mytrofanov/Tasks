@@ -53,7 +53,7 @@ getBut("bt-18", f18);
 getBut("bt-19", f19);
 getBut("i-22", f22);
 getBut("bt-20", f24);
-// getBut("bt-21", f25);
+getBut("bt-26", f26);
 
 
 // Палиндром
@@ -257,12 +257,18 @@ function f24() {
 }
 
 function f25(elem) {
-
     elem.value === 'Нажми на меня' ? (elem.value = 'Зачем ты нажал?' ,
-        elem.style.backgroundColor= 'red'): (elem.value = 'Нажми на меня',
-        elem.style.backgroundColor= 'white')
+        elem.style.backgroundColor = 'red') : (elem.value = 'Нажми на меня',
+        elem.style.backgroundColor = 'white')
+}
 
+function f26() {
 
+    let input = document.getElementById('i-26')
+    let button = document.getElementById('bt-26')
 
-
+    button.innerHTML == 'Блокировать' ? (button.innerHTML = 'Разблокировать', input.disabled = true,
+            button.style.backgroundColor = 'red')
+        : (input.disabled = false, button.innerHTML = 'Блокировать',
+            button.style.backgroundColor = 'white')
 }
