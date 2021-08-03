@@ -51,6 +51,7 @@ getBut("bt-16", f16);
 getBut("bt-17", f17);
 getBut("bt-18", f18);
 getBut("bt-19", f19);
+getBut("i-22", f22);
 
 
 // Палиндром
@@ -235,4 +236,8 @@ function f19() {
 
     let average = sum / arrF19.length
     putVal('r-19-5', average)
+}
+
+function f22() {
+    document.getElementById('i-22').value = 'новый текст'
 }
