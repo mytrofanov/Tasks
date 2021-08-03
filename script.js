@@ -233,4 +233,6 @@ function f19() {
     }
     putVal('r-19-4', ' ' + sqSum)
 
+    let average = sum / arrF19.length
+    putVal('r-19-5', average)
 }
