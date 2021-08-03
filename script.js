@@ -52,6 +52,7 @@ getBut("bt-17", f17);
 getBut("bt-18", f18);
 getBut("bt-19", f19);
 getBut("i-22", f22);
+getBut("bt-20", f24);
 
 
 // Палиндром
@@ -243,4 +244,13 @@ function f22() {
     alert('старое значение: ' + input.value)
     input.value = 'новый текст'
 
+}
+
+function f24() {
+    let input1 = document.getElementById('i-24')
+    let input2 = document.getElementById('i-24-1')
+    let input1value = input1.value
+    let input2value = input2.value
+    input1.value=input2value
+    input2.value=input1value
 }
