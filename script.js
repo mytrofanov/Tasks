@@ -258,7 +258,10 @@ function f24() {
 
 function f25(elem) {
 
-    elem.value === 'Нажми на меня' ? elem.value = 'Зачем ты нажал?':elem.value = 'Нажми на меня'
+    elem.value === 'Нажми на меня' ? (elem.value = 'Зачем ты нажал?' ,
+        elem.style.backgroundColor= 'red'): (elem.value = 'Нажми на меня',
+        elem.style.backgroundColor= 'white')
+
 
 
 
