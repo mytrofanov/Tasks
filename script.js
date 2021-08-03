@@ -32,7 +32,6 @@ let clearVal = (id) => {
 }
 
 
-
 but('.b-1', palindrom);
 but('.b-2', arr);
 but('.b-3', clean_array_numbers);
@@ -52,7 +51,6 @@ getBut("bt-16", f16);
 getBut("bt-17", f17);
 getBut("bt-18", f18);
 getBut("bt-19", f19);
-
 
 
 // Палиндром
@@ -203,27 +201,30 @@ function f19() {
     document.getElementById('r-19-1').innerHTML = ''
     clearVal('r-19-2')
 
-
     for (let i = 0; i < 10; i++) {
         arrF19.push(Math.round(Math.random() * 10))
     }
     putVal('r-19', arrF19)
-    console.log('первый цикл'  + arrF19)
 
     for (let b = 0; b < 10; b++) {
         if (arrF19[b] > 0 && arrF19[b] < 10) {
-            putValPlus('r-19-1', arrF19[b] + ',')
         }
-        console.log('второй цикл'  + arrF19)
-       }
+        putValPlus('r-19-1', arrF19[b] + ',')
+    }
+
     clearVal('r-19-2')
-    for (let c=0; c<arrF19.length; c++) {
-        if(arrF19[c]==5) {
+    for (let c = 0; c < arrF19.length; c++) {
+        if (arrF19[c] == 5) {
             putVal('r-19-2', 'есть такая цифра')
             break;
         } else putVal('r-19-2', 'нет таких')
 
     }
-    console.log('поиск цифры' + arrF19)
+
+    let sum = 0;
+    for (let d = 0; d < arrF19.length; d++) {
+        sum += arrF19[d]
+    }
+    putVal('r-19-3', 'Сумма всех чисел массива:' + sum)
 
 }
