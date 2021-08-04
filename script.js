@@ -54,6 +54,7 @@ getBut("bt-19", f19);
 getBut("i-22", f22);
 getBut("bt-20", f24);
 getBut("bt-26", f26);
+getBut("bt-27", f27);
 
 
 // Палиндром
@@ -271,4 +272,15 @@ function f26() {
             button.style.backgroundColor = 'red')
         : (input.disabled = false, button.innerHTML = 'Блокировать',
             button.style.backgroundColor = 'white')
+}
+
+function f27 () {
+    Number.prototype.plus = function (value) {
+        return this + value
+    }
+    Number.prototype.minus = function (value) {
+        return this - value
+    }
+
+    putVal('r-27', (2).plus(3).minus(1))
 }
