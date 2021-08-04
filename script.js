@@ -55,6 +55,7 @@ getBut("i-22", f22);
 getBut("bt-20", f24);
 getBut("bt-26", f26);
 getBut("bt-27", f27);
+getBut("bt-28", f28);
 
 
 // Палиндром
@@ -274,7 +275,7 @@ function f26() {
             button.style.backgroundColor = 'white')
 }
 
-function f27 () {
+function f27() {
     Number.prototype.plus = function (value) {
         return this + value
     }
@@ -283,4 +284,14 @@ function f27 () {
     }
 
     putVal('r-27', (2).plus(3).minus(1))
+}
+
+function f28() {
+    let str = ['*', '1', 'b', '1c']
+
+    function getStr(str) {
+        return [].slice.call(str, 1).join(str[0])
+    }
+
+    putVal('r-28', getStr(str))
 }
