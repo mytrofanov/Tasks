@@ -295,3 +295,36 @@ function f28() {
 
     putVal('r-28', getStr(str))
 }
+// Замена первой буквы каждого слова на заглавную в предложении
+str = 'Каждый охотник желает знать'
+function capitalize(str) {
+    let str2 = ''
+    for (let v of str.split(' ')) {
+        str2 = str2 + String(v.replace(v[0], v[0].toUpperCase())) + " "
+    }
+    return str2;
+}
+
+// Замена первой буквы каждого слова на заглавную в предложении - метод, пробелы пропускаются
+String.prototype.toJadenCase = function () {
+    return this.replace(/(^|\s)\S/g, function(a) {return a.toUpperCase()})
+};
+console.log (str.toJadenCase())
+
+//маскировка всех символов кроме 4 последних
+let word = '1111kkkksss!888'
+String.prototype.mask = function () {
+    return this.replace(/(\w| )(?=(\w| ){4})/g, 'X')
+};
+
+console.log (word.mask())
+
+
+
+
+let a = 'How Can Mirrors Be Real If Our Eyes Aren\'t Real'
+let b = 'How Can Mirrors Be Real If Our Eyes Aren\'t Real'
+console.log (a===b)
+
+
+
