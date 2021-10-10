@@ -295,8 +295,10 @@ function f28() {
 
     putVal('r-28', getStr(str))
 }
+
 // Замена первой буквы каждого слова на заглавную в предложении
 str = 'Каждый охотник желает знать'
+
 function capitalize(str) {
     let str2 = ''
     for (let v of str.split(' ')) {
@@ -307,9 +309,11 @@ function capitalize(str) {
 
 // Замена первой буквы каждого слова на заглавную в предложении - метод, пробелы пропускаются
 String.prototype.toJadenCase = function () {
-    return this.replace(/(^|\s)\S/g, function(a) {return a.toUpperCase()})
+    return this.replace(/(^|\s)\S/g, function (a) {
+        return a.toUpperCase()
+    })
 };
-console.log (str.toJadenCase())
+// console.log(str.toJadenCase())
 
 //маскировка всех символов кроме 4 последних
 let word = '1111kkkksss!888'
@@ -317,14 +321,24 @@ String.prototype.mask = function () {
     return this.replace(/(\w| )(?=(\w| ){4})/g, 'X')
 };
 
-console.log (word.mask())
+// console.log(word.mask())
 
+//проверка на квадратный корень
 
+function square(int) {
+    let num = (Math.sqrt(int))
+    console.log(Number.isInteger(num))
+}
 
+// square(4)
 
-let a = 'How Can Mirrors Be Real If Our Eyes Aren\'t Real'
-let b = 'How Can Mirrors Be Real If Our Eyes Aren\'t Real'
-console.log (a===b)
-
-
-
+function TheBiggest() {
+    let string = "1 -2 3 4 5"
+    let array = string.split(' ').map(Number)
+    let minimum = Math.min.apply(null, array)
+    let maximum = Math.max.apply(null, array)
+    let newArray = [maximum, minimum]
+    let newString = newArray.join(' ')
+    console.log(newString)
+}
+TheBiggest()
