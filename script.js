@@ -341,4 +341,54 @@ function TheBiggest() {
     let newString = newArray.join(' ')
     console.log(newString)
 }
-TheBiggest()
+
+// TheBiggest()
+
+//Поменять регистр только у букв после тире или подчеркивания:
+//обязательно проверка на пустую строку
+// let string1 = "the-stealth-warrior"
+// let string2 = "the_stealth_warrior"
+// let string3=''
+//
+// function CamelCase (str) {
+//
+//     if (!str) {
+//         let str = ''
+//         return str
+//     }
+//
+//     if (str.includes('-')) {
+//         return str.replace( /-([a-z])/ig, function( all, letter ) {
+//             return letter.toUpperCase();
+//         });
+//
+//     }  if (str.includes('_')) {
+//         return str.replace( /_([a-z])/ig, function( all, letter ) {
+//             return letter.toUpperCase();
+//         });
+//
+//     }
+//
+// }
+//
+// console.log(CamelCase(string3))
+
+// remove vowels =================================================
+// let sting = "This website is for losers LOL!"
+//
+// function RemoveVowels(string) {
+//     return string.replace(/[aeiouAEIOU]/g, "")
+// }
+// console.log (RemoveVowels (sting))
+
+// ===================== binary numbers ==========================
+// function binary(num1 ,num2) {
+//     let res = num1+num2
+//     let result = (res >>> 0).toString(2);
+//     let explanation =`\'${result} (${num1} + ${num2} = ${res} in decimal or ${result} in binary)\'`
+//     return explanation
+//
+// }
+//
+// console.log (binary(1, 2))
+
