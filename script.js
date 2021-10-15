@@ -403,3 +403,18 @@ function TheBiggest() {
 //     return friends
 // }
 // console.log(friends(array))
+// вернуть true если можно построить треугольник,
+//  т.е. сумма двух цифр должна быть меньше третьей цифры
+// function triangle(a, b, c) {
+//     let array = [a, b, c]
+//     if (array.every(elem=>elem > 0)) {
+//      if (array[0]<array[1]+array[2]){
+//          if (array[1]<array[0]+array[2]) {
+//              if (array[2]<array[1]+array[0]) {  return  true } else return false
+//          } else return false
+//      } else return false
+//        }
+//     else  return false
+//     }
+//
+// console.log( triangle(2, 3,3))
