@@ -391,4 +391,15 @@ function TheBiggest() {
 // }
 //
 // console.log (binary(1, 2))
-
+// выбрать друзей с 4мя именами
+// let array =["Ryan", "Kieran", "Mark"]
+// function friends(array) {
+//     let friends= []
+//     for (let i=0; i<array.length; i++) {
+//         if (array[i].length ===4) {
+//             friends.push(array[i])
+//         }
+//     }
+//     return friends
+// }
+// console.log(friends(array))
