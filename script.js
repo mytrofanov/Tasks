@@ -418,3 +418,15 @@ function TheBiggest() {
 //     }
 //
 // console.log( triangle(2, 3,3))
+// let mathArray = [3,2,'a','b', 1, '111']
+// function filter_list(l){
+//     let newArray =[]
+//     for (let i=0; i<l.length; i++) {
+//         Number.isInteger(l[i]) && newArray.push(l[i])
+//         }
+//         return newArray
+//     }
+//
+//
+//
+// console.log(filter_list(mathArray))
