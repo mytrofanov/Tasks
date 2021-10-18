@@ -418,3 +418,19 @@ function TheBiggest() {
 //     }
 //
 // console.log( triangle(2, 3,3))
+//
+
+// ============= проверяем есть ли в предложении все буквы алфавита
+
+// string ='The quick brown fox jumps over the lazy dog'
+//
+// function allLetters(string){
+//     let alpha = new Set("abcdefghijklmnopqrstuvwxyz")
+//     for (let c of string.toLowerCase()){
+//         alpha.delete(c)
+//         }
+//
+//     if (alpha.size == 0) {return true}
+//     else return false
+// }
+// console.log(allLetters (string))
