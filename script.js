@@ -434,4 +434,20 @@ function TheBiggest() {
 //     else return false
 // }
 // console.log(allLetters (string))
+
+// ======= сколько людей остались в автобусе ===
+// получаем пары чисел = вошло, вышло
+// const stops = [
+//  [10, 0],
+//  [5, 3],
+//  [4, 4],
+//  [3, 8],
+//  [0, 2],
+// ]
 //
+//
+// var number = function(busStops){
+//    let result = busStops.reduce((total, [enter, exit]) => total + enter - exit, 0);
+//    return result
+// }
+// console.log(number(stops))
