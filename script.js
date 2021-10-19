@@ -464,3 +464,16 @@ function TheBiggest() {
 //
 // }
 // console.log(findShort(string))
+//разбить строку по два символа : match
+// string = 'bitcoinperhapss'
+//
+// function solution(str) {
+//     if (str) {
+//     let array = str.match(/.{1,2}/g)
+//     if (array[array.length-1].length <2 ) {
+//         array[array.length-1] = array[array.length-1] + '_'
+//     }
+//     return array}
+//     else return str = []
+// }
+// console.log (solution(string))
