@@ -451,3 +451,16 @@ function TheBiggest() {
 //    return result
 // }
 // console.log(number(stops))
+// string = 'bitcoin take over the world maybe who knows perhaps'
+//
+// function findShort(s) {
+//     let words = s.split(' ')
+//     let shortWord = words[0]
+//     for (let i=0; i< words.length; i++) {
+//         if (words[i].length < shortWord.length  ) {
+//             shortWord = words[i]
+//         }
+//     } return shortWord.length
+//
+// }
+// console.log(findShort(string))
