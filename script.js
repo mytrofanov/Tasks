@@ -477,3 +477,18 @@ function TheBiggest() {
 //     else return str = []
 // }
 // console.log (solution(string))
+// =================== удвоить каждую цифру из числа ======================
+// function integer(num) {
+//     if (!num) {
+//         return 0
+//     }
+//     let str = String(num)
+//     let arr = Array.from(str)
+//     let mult = arr.map(num => num * num)
+//     let NewStr = mult.join('')
+//     let result = Number(NewStr)
+//     return result
+// }
+//
+// console.log(integer(125))
+
