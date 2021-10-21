@@ -545,4 +545,31 @@ function TheBiggest() {
 // }
 //
 //
-// console.log (sumOfSeries(1))
+// // console.log (sumOfSeries(1))
+// // нужно сделать серию Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+// 1 --> 1 --> "1.00"
+// 2 --> 1 + 1/4 --> "1.25"
+// 5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
+// describe("Tests", () => {
+//     it("test", () => {
+//         Test.assertEquals(SeriesSum(1), "1.00")
+//         Test.assertEquals(SeriesSum(2), "1.25")
+//         Test.assertEquals(SeriesSum(3), "1.39")
+//         Test.assertEquals(SeriesSum(4), "1.49")
+//     });
+// });
+
+function seria(n) {
+    let result = 0;
+    let reverage = 1;
+    for (let i = 0; i < n; i += 1) {
+        if (i === 0) {
+            result = 1;
+        } else {
+            reverage += 3;
+            result = result + (1 / reverage);
+        }
+    }
+    return result.toFixed(2);
+}
+console.log(seria(2))
