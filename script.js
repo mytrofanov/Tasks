@@ -491,4 +491,16 @@ function TheBiggest() {
 // }
 //
 // console.log(integer(125))
-
+// Распределить членство в клубе по двум цифрам: возраст и handicap
+// возраст старших должен быть от 55 и handicap ниже 7 (чем ниже тем лучше)
+let applicantData = [[18, 20],[45, 2],[61, 12],[37, 6],[21, 21],[78, 9]]
+let senior = [55,7]
+function checkMembers(data) {
+    let members = []
+    for (let i=0; i<data.length; i++) {
+        if(data[i][0] >=55 && data[i][1]>7 ) {
+            members.push('Senior')
+        } else members.push('Open')
+    } return members
+}
+console.log(checkMembers([[59, 12],[55,-1],[12, -2],[12, 12]]))
