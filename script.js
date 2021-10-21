@@ -493,14 +493,56 @@ function TheBiggest() {
 // console.log(integer(125))
 // Распределить членство в клубе по двум цифрам: возраст и handicap
 // возраст старших должен быть от 55 и handicap ниже 7 (чем ниже тем лучше)
-let applicantData = [[18, 20],[45, 2],[61, 12],[37, 6],[21, 21],[78, 9]]
-let senior = [55,7]
-function checkMembers(data) {
-    let members = []
-    for (let i=0; i<data.length; i++) {
-        if(data[i][0] >=55 && data[i][1]>7 ) {
-            members.push('Senior')
-        } else members.push('Open')
-    } return members
-}
-console.log(checkMembers([[59, 12],[55,-1],[12, -2],[12, 12]]))
+// let applicantData = [[18, 20],[45, 2],[61, 12],[37, 6],[21, 21],[78, 9]]
+// let senior = [55,7]
+// function checkMembers(data) {
+//     let members = []
+//     for (let i=0; i<data.length; i++) {
+//         if(data[i][0] >=55 && data[i][1]>7 ) {
+//             members.push('Senior')
+//         } else members.push('Open')
+//     } return members
+// }
+// console.log(checkMembers([[59, 12],[55,-1],[12, -2],[12, 12]]))
+
+// Your task is to write a function which returns the sum of following series upto nth term(parameter).
+//
+//     Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+// 1 --> 1 --> "1.00"
+// 2 --> 1 + 1/4 --> "1.25"
+// 5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
+// let series = ' 1 + 1/4 + 1/7 + 1/10 + 1/13'
+// // перевожу мат выражение в строку  и считаю
+// function sumOfSeries(n) {
+//     if ( n != NaN|| n === 0) {
+//         let a= Number(n).toFixed(2)
+//         return a.toString()}
+//     let numArray = n.split('+')
+//     let expression = []
+//     let results = []
+//     let resultsNum = []
+//     let result
+//
+//     for (let i = 0; i < numArray.length; i++) {
+//         expression.push(numArray[i].split('/'))
+//     }
+//
+//     for (let i = 0; i < expression.length; i++) {
+//         expression[i][0] = Number(expression[i][0])
+//         if (expression[i][1]) {
+//             expression[i][1] = Number(expression[i][1])
+//         }
+//         let num = expression[i][1] ? expression[i][0] / expression[i][1] : expression [i][0]
+//         results.push(num.toFixed(2))
+//     }
+//     for (let i = 0; i < results.length; i++) {
+//         resultsNum.push(Number(results[i]))
+//     }
+//     result = resultsNum.reduce((previousValue, currentValue) => previousValue + currentValue)
+//     result = result.toFixed(2)
+//     let stringResult = result.toString()
+//     return stringResult
+// }
+//
+//
+// console.log (sumOfSeries(1))
