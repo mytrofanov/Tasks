@@ -558,18 +558,32 @@ function TheBiggest() {
 //         Test.assertEquals(SeriesSum(4), "1.49")
 //     });
 // });
+//
+// function seria(n) {
+//     let result = 0;
+//     let reverage = 1;
+//     for (let i = 0; i < n; i += 1) {
+//         if (i === 0) {
+//             result = 1;
+//         } else {
+//             reverage += 3;
+//             result = result + (1 / reverage);
+//         }
+//     }
+//     return result.toFixed(2);
+// }
+// console.log(seria(2))
+//  сделать из массива телефонный номер:
+// createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
 
-function seria(n) {
-    let result = 0;
-    let reverage = 1;
-    for (let i = 0; i < n; i += 1) {
-        if (i === 0) {
-            result = 1;
-        } else {
-            reverage += 3;
-            result = result + (1 / reverage);
-        }
+function createPhoneNumber(numbers) {
+
+    let string = ''
+    for (let i=0; i<numbers.length; i++) {
+        string +=numbers[i]
     }
-    return result.toFixed(2);
+    let result = `(${string.slice(0,3)}) ${string.slice(3,6)}-${string.slice(6,10)}`
+    return result
 }
-console.log(seria(2))
+
+console.log (createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
