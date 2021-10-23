@@ -575,15 +575,30 @@ function TheBiggest() {
 // console.log(seria(2))
 //  сделать из массива телефонный номер:
 // createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+//
+// function createPhoneNumber(numbers) {
+//
+//     let string = ''
+//     for (let i=0; i<numbers.length; i++) {
+//         string +=numbers[i]
+//     }
+//     let result = `(${string.slice(0,3)}) ${string.slice(3,6)}-${string.slice(6,10)}`
+//     return result
+// }
+//
+// console.log (createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+// Write a function that takes an (unsigned) integer as input, and returns the number of bits that are equal to one in the binary representation of that number.
+//
+//     Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
 
-function createPhoneNumber(numbers) {
+var countBits = function(n) {
+    // make an array with the bit result
+    const base = (n).toString(2).split('');
 
-    let string = ''
-    for (let i=0; i<numbers.length; i++) {
-        string +=numbers[i]
-    }
-    let result = `(${string.slice(0,3)}) ${string.slice(3,6)}-${string.slice(6,10)}`
-    return result
-}
+    // make a sum with the array and make the index a Number
+    const result = base.reduce((sum, num) => sum + Number(num), 0);
+    console.log(base)
+    return result;
+};
 
-console.log (createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+console.log(countBits(1234))
