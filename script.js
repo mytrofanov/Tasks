@@ -590,15 +590,31 @@ function TheBiggest() {
 // Write a function that takes an (unsigned) integer as input, and returns the number of bits that are equal to one in the binary representation of that number.
 //
 //     Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
+//
+// var countBits = function(n) {
+//     // make an array with the bit result
+//     const base = (n).toString(2).split('');
+//
+//     // make a sum with the array and make the index a Number
+//     const result = base.reduce((sum, num) => sum + Number(num), 0);
+//     console.log(base)
+//     return result;
+// };
+//
+// console.log(countBits(1234))
 
-var countBits = function(n) {
-    // make an array with the bit result
-    const base = (n).toString(2).split('');
+//Given n, take the sum of the digits of n. If that value has more than one digit,
+// continue reducing in this way until a single-digit number is produced.
+// The input will be a non-negative integer.
+//Разложить многозначное число на однозначные и получить суммы
 
-    // make a sum with the array and make the index a Number
-    const result = base.reduce((sum, num) => sum + Number(num), 0);
-    console.log(base)
-    return result;
-};
+function digits(n) {
+    let sum = 0
 
-console.log(countBits(1234))
+     String(n).split('').map(number =>
+        sum += Number(number)
+    )
+    return sum > 10 ? digits(sum) : sum
+}
+
+console.log(digits(123))
