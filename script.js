@@ -607,14 +607,74 @@ function TheBiggest() {
 // continue reducing in this way until a single-digit number is produced.
 // The input will be a non-negative integer.
 //Разложить многозначное число на однозначные и получить суммы
+//
+// function digits(n) {
+//     let sum = 0
+//
+//      String(n).split('').map(number =>
+//         sum += Number(number)
+//     )
+//     return sum > 10 ? digits(sum) : sum
+// }
+//
+// console.log(digits(123))
+//собрать сумму вершин с дерева (листья)
+const tree = [
+    {
+        v: 5,
+        c: [
+            {
+                v:10,
+                c: [
+                    {
+                        v:11,
+                    }
+                ]
+            },
+            {
+                v:7,
+                c: [
+                    {
+                        v:5,
+                        c: [
+                            {
+                                v:1
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        v: 5,
+        c: [
+            {
+                v:10
+            },
+            {
+                v:15
+            }
+        ]
+    }
+]
 
-function digits(n) {
+function treeSum(tree) {
+    if (!tree.length) {
+        return 0
+    }
     let sum = 0
+    let stack = []
+    tree.forEach(node => stack.push(node))
+    while (stack.length) {
+        let node = stack.pop()
+        sum += node.v
+        if (node.c) {
+            node.c.forEach(n => stack.push(n))
 
-     String(n).split('').map(number =>
-        sum += Number(number)
-    )
-    return sum > 10 ? digits(sum) : sum
+        }
+    }
+    return  sum
 }
 
-console.log(digits(123))
+console.log(treeSum(tree))
