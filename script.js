@@ -430,3 +430,32 @@ function TheBiggest() {
 //
 //
 // console.log(filter_list(mathArray))
+
+//узнать количество всех вариантов отрезков из массива
+// let array = [2,4,1]
+// let result = []
+
+// 2
+// 2, 4
+// 2, 4, 1
+// 4
+// 4, 1
+// 1
+
+// 2,4,1
+//2-4, 2-1, 4-1,
+// for (let i=0; i<array.length; i++) {
+//
+//     let temp = []
+//
+//     for (let a=i; a<array.length; a++) {
+//         temp.push(array[a])
+//
+//         result.push([...temp])
+//         console.log(temp)
+//     }
+//
+//
+// }
+//
+// console.log(result)
