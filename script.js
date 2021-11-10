@@ -619,62 +619,92 @@ function TheBiggest() {
 //
 // console.log(digits(123))
 //собрать сумму вершин с дерева (листья)
-const tree = [
-    {
-        v: 5,
-        c: [
-            {
-                v:10,
-                c: [
-                    {
-                        v:11,
-                    }
-                ]
-            },
-            {
-                v:7,
-                c: [
-                    {
-                        v:5,
-                        c: [
-                            {
-                                v:1
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        v: 5,
-        c: [
-            {
-                v:10
-            },
-            {
-                v:15
-            }
-        ]
-    }
-]
+// const tree = [
+//     {
+//         v: 5,
+//         c: [
+//             {
+//                 v:10,
+//                 c: [
+//                     {
+//                         v:11,
+//                     }
+//                 ]
+//             },
+//             {
+//                 v:7,
+//                 c: [
+//                     {
+//                         v:5,
+//                         c: [
+//                             {
+//                                 v:1
+//                             }
+//                         ]
+//                     }
+//                 ]
+//             }
+//         ]
+//     },
+//     {
+//         v: 5,
+//         c: [
+//             {
+//                 v:10
+//             },
+//             {
+//                 v:15
+//             }
+//         ]
+//     }
+// ]
+//
+// function treeSum(tree) {
+//     if (!tree.length) {
+//         return 0
+//     }
+//     let sum = 0
+//     let stack = []
+//     tree.forEach(node => stack.push(node))
+//     while (stack.length) {
+//         let node = stack.pop()
+//         sum += node.v
+//         if (node.c) {
+//             node.c.forEach(n => stack.push(n))
+//
+//         }
+//     }
+//     return  sum
+// }
+//
+// console.log(treeSum(tree))
 
-function treeSum(tree) {
-    if (!tree.length) {
-        return 0
-    }
-    let sum = 0
-    let stack = []
-    tree.forEach(node => stack.push(node))
-    while (stack.length) {
-        let node = stack.pop()
-        sum += node.v
-        if (node.c) {
-            node.c.forEach(n => stack.push(n))
+// Задача с собеседования:
+//узнать количество всех вариантов отрезков из массива
+// let array = [2,4,1]
+// let result = []
 
-        }
-    }
-    return  sum
-}
+// 2
+// 2, 4
+// 2, 4, 1
+// 4
+// 4, 1
+// 1
 
-console.log(treeSum(tree))
+// 2,4,1
+//2-4, 2-1, 4-1,
+// for (let i=0; i<array.length; i++) {
+//
+//     let temp = []
+//
+//     for (let a=i; a<array.length; a++) {
+//         temp.push(array[a])
+//
+//         result.push([...temp])
+//         console.log(temp)
+//     }
+//
+//
+// }
+//
+// console.log(result)
