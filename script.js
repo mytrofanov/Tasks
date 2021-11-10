@@ -715,12 +715,35 @@ function TheBiggest() {
  //   Input: 42145 Output: 54421
 //Input: 145263 Output: 654321
 //Input: 123456789 Output: 987654321
+//
+// function descendingOrder(n) {
+//     const arrayOfDigits = Array.from(String(n), Number);
+//     arrayOfDigits.sort(function (a,b) {return b - a
+//     })
+//     let result = +arrayOfDigits.join('')
+//     return result
+// }
+// console.log(descendingOrder(145263))
 
-function descendingOrder(n) {
-    const arrayOfDigits = Array.from(String(n), Number);
-    arrayOfDigits.sort(function (a,b) {return b - a
+a1 = ["strong", "arp", "live" ]
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+function substrings (array1,array2) {
+    let result = []
+    for (let i=0; i<array1.length; i++) {
+        for (let a=0; a<array2.length; a++) {
+               if (array2[a].includes(array1[i])) {
+                   if(!result.includes(array1[i])) {
+                       result.push(array1[i])
+                   }
+               }
+        }
+    }
+    result.sort(function (a,b) {
+        if (a>b){return 1}
+        if (a<b) {return -1}
     })
-    let result = +arrayOfDigits.join('')
     return result
 }
-console.log(descendingOrder(145263))
+
+console.log(substrings(a1,a2))
