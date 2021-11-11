@@ -712,7 +712,7 @@ function TheBiggest() {
 // and return it with its digits in descending order. Essentially,
 // rearrange the digits to create the highest possible number.
 //Examples:
- //   Input: 42145 Output: 54421
+//   Input: 42145 Output: 54421
 //Input: 145263 Output: 654321
 //Input: 123456789 Output: 987654321
 //
@@ -724,26 +724,87 @@ function TheBiggest() {
 //     return result
 // }
 // console.log(descendingOrder(145263))
+//
+// a1 = ["strong", "arp", "live" ]
+// a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+//
+// function substrings (array1,array2) {
+//     let result = []
+//     for (let i=0; i<array1.length; i++) {
+//         for (let a=0; a<array2.length; a++) {
+//                if (array2[a].includes(array1[i])) {
+//                    if(!result.includes(array1[i])) {
+//                        result.push(array1[i])
+//                    }
+//                }
+//         }
+//     }
+//     result.sort(function (a,b) {
+//         if (a>b){return 1}
+//         if (a<b) {return -1}
+//     })
+//     return result
+// }
+//
+// console.log(substrings(a1,a2))
+//================================================================================================================
+// You are going to be given an array of integers. Your job is to take that array and find an index N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no index that would make this happen, return -1.
+//
+// For example:
+//
+//     Let's say you are given the array {1,2,3,4,3,2,1}:
+// Your function will return the index 3, because at the 3rd position of the array, the sum of left side of the index ({1,2,3}) and the sum of the right side of the index ({3,2,1}) both equal 6.
+//
+// Let's look at another one.
+// You are given the array {1,100,50,-51,1,1}:
+// Your function will return the index 1, because at the 1st position of the array, the sum of left side of the index ({1}) and the sum of the right side of the index ({50,-51,1,1}) both equal 1.
+//
+// Last one:
+//     You are given the array {20,10,-80,10,10,15,35}
+// At index 0 the left side is {}
+// The right side is {10,-80,10,10,15,35}
+// They both are equal to 0 when added. (Empty arrays are equal to 0 in this problem)
+// Index 0 is the place where the left side and right side are equal.
+//
+//     Note: Please remember that in most programming/scripting languages the index of an array starts at 0.
+//
+// Input:
+//     An integer array of length 0 < arr < 1000. The numbers in the array can be any integer positive or negative.
+//
+//     Output:
+// The lowest index N where the side to the left of N is equal to the side to the right of N.
+// If you do not find an index that fits these rules, then you will return -1.
+//
+// Note:
+//     If you are given an array with multiple answers, return the lowest correct index.
 
-a1 = ["strong", "arp", "live" ]
-a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+arr = [20,10,30,10,10,15,35]
 
-function substrings (array1,array2) {
-    let result = []
-    for (let i=0; i<array1.length; i++) {
-        for (let a=0; a<array2.length; a++) {
-               if (array2[a].includes(array1[i])) {
-                   if(!result.includes(array1[i])) {
-                       result.push(array1[i])
-                   }
-               }
-        }
+function findEvenIndex(arr) {
+    if (!arr.length||arr.length>1000) {
+        return null
     }
-    result.sort(function (a,b) {
-        if (a>b){return 1}
-        if (a<b) {return -1}
-    })
-    return result
+    let left = 0
+    for (let i = 0; i < arr.length; i++) {
+        let right = 0
+        if (i>0) {
+            left += arr[i-1]
+        }
+            right = arr.slice(i+1,arr.length)
+        let res
+            if (right.length>0) {
+                res = right.reduce(function (sum,elem) {
+                    return sum +elem
+                })
+            }
+
+            console.log(`i=${i} left= ${left}; right= ${res}`)
+            if (left === res) {
+                return i
+            }
+    }
+    return -1
 }
 
-console.log(substrings(a1,a2))
+console.log(findEvenIndex(arr))
+
