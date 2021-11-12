@@ -844,16 +844,60 @@ function TheBiggest() {
 //     P.S. The situation in this kata can be likened to the more-computer-science-related idea
 //     of a thread pool, with relation to running multiple processes
 //     at the same time: https://en.wikipedia.org/wiki/Thread_pool
+//
+// function queueTime(customers, tillsNumber) {
+//     let tills = new Array(tillsNumber).fill(0)
+//     for (let t of customers) {
+//         let index = tills.indexOf(Math.min(...tills))
+//         tills[index] +=t
+//         console.log('tills:')
+//         console.log(tills)
+//     }
+//
+//     return Math.max(...tills)
+// }
+// console.log(queueTime([2,3,10], 2))
+//===================================================================================================================
+// Write a function that takes a string of braces, and determines
+// if the order of the braces is valid. It should return true if the string is valid, and false if it's invalid.
+//
+// This Kata is similar to the Valid Parentheses Kata,
+// but introduces new characters: brackets [], and curly braces {}. Thanks to @arnedag for the idea!
+//
+//     All input strings will be nonempty, and will only consist of parentheses,
+//     brackets and curly braces: ()[]{}.
+//
+// What is considered Valid?
+//     A string of braces is considered valid if all braces are matched with the correct brace.
+//
+//     Examples
+// "(){}[]"   =>  True
+// "([{}])"   =>  True
+// "(}"       =>  False
+// "[(])"     =>  False
+// "[({})](]" =>  False
 
-function queueTime(customers, tillsNumber) {
-    let tills = new Array(tillsNumber).fill(0)
-    for (let t of customers) {
-        let index = tills.indexOf(Math.min(...tills))
-        tills[index] +=t
-        console.log('tills:')
-        console.log(tills)
+function validBraces(braces){
+    let tracer = []
+    for(let i=0;i < braces.length; i++){
+        if ( braces[i] === "(" || braces[i] === "{" || braces[i] === "["){
+            tracer.push(braces[i])
+            console.log(tracer)
+        } else{
+            if(tracer.length === 0) return false
+            let lastValue = tracer[tracer.length-1]
+            if( (braces[i] === ']' && lastValue === '[') || (braces[i] === '}' && lastValue === '{') ||
+                (braces[i] === ')' && lastValue === '('))
+            {
+                tracer.pop()
+                console.log(tracer)
+            } else {
+                break;
+            }
+        }
+
     }
-
-    return Math.max(...tills)
+    return tracer.length === 0
 }
-console.log(queueTime([2,3,10], 2))
+
+console.log(validBraces( "({})[({})]" )) // true
