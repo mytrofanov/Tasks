@@ -912,10 +912,41 @@ function TheBiggest() {
 //     If input data is invalid you should return 0 (as in no breaks are needed
 //     if we do not have any chocolate to split). Input will always be a non-negative integer.
 //
-function breakChocolate(n,m) {
-    if (n>1 && m===1 || n===1 && m>1 || n>=1 && m>= 1) {
-        return n*m -1
+// function breakChocolate(n,m) {
+//     if (n>1 && m===1 || n===1 && m>1 || n>=1 && m>= 1) {
+//         return n*m -1
+//     }
+//     else return 0
+// }
+// console.log(breakChocolate(3,0))
+
+// You are given an array (which will have a length of at least 3,
+// but could be very large) containing integers. The array is either entirely
+// comprised of odd integers or entirely comprised of even integers except for
+// a single integer N. Write a method that takes the array as an argument
+// and returns this "outlier" N.
+//
+//     Examples
+//     [2, 4, 0, 100, 4, 11, 2602, 36]
+// Should return: 11 (the only odd number)
+//
+// [160, 3, 1719, 19, 11, 13, -21]
+// Should return: 160 (the only even number)
+
+function oddOrEvenNumbers(integers) {
+    let array1 = []
+    let array2 = []
+    for (let i=0; i<integers.length; i++) {
+        if (integers[i] % 2 === 0) {
+            array1.push(integers[i])
+        }
+        if (integers[i] % 2 != 0) {
+            array2.push(integers[i])
+        }
     }
-    else return 0
+    if (array1.length < array2.length) {
+        return array1[0]
+    } else return array2[0]
+
 }
-console.log(breakChocolate(3,0))
+console.log(oddOrEvenNumbers([160, 3, 1719, 19, 11, 13, -21]))
