@@ -876,28 +876,46 @@ function TheBiggest() {
 // "(}"       =>  False
 // "[(])"     =>  False
 // "[({})](]" =>  False
-
-function validBraces(braces){
-    let tracer = []
-    for(let i=0;i < braces.length; i++){
-        if ( braces[i] === "(" || braces[i] === "{" || braces[i] === "["){
-            tracer.push(braces[i])
-            console.log(tracer)
-        } else{
-            if(tracer.length === 0) return false
-            let lastValue = tracer[tracer.length-1]
-            if( (braces[i] === ']' && lastValue === '[') || (braces[i] === '}' && lastValue === '{') ||
-                (braces[i] === ')' && lastValue === '('))
-            {
-                tracer.pop()
-                console.log(tracer)
-            } else {
-                break;
-            }
-        }
-
+//
+// function validBraces(braces){
+//     let tracer = []
+//     for(let i=0;i < braces.length; i++){
+//         if ( braces[i] === "(" || braces[i] === "{" || braces[i] === "["){
+//             tracer.push(braces[i])
+//             console.log(tracer)
+//         } else{
+//             if(tracer.length === 0) return false
+//             let lastValue = tracer[tracer.length-1]
+//             if( (braces[i] === ']' && lastValue === '[') || (braces[i] === '}' && lastValue === '{') ||
+//                 (braces[i] === ')' && lastValue === '('))
+//             {
+//                 tracer.pop()
+//                 console.log(tracer)
+//             } else {
+//                 break;
+//             }
+//         }
+//
+//     }
+//     return tracer.length === 0
+// }
+//
+// console.log(validBraces( "({})[({})]" )) // true
+//=====================================================================================================
+// Your task is to split the chocolate bar of given dimension n x m into small squares.
+// Each square is of size 1x1 and unbreakable.
+// Implement a function that will return minimum number of breaks needed.
+//
+//     For example if you are given a chocolate bar of size 2 x 1 you can
+//     split it to single squares in just one break, but for size 3 x 1 you must do two breaks.
+//
+//     If input data is invalid you should return 0 (as in no breaks are needed
+//     if we do not have any chocolate to split). Input will always be a non-negative integer.
+//
+function breakChocolate(n,m) {
+    if (n>1 && m===1 || n===1 && m>1 || n>=1 && m>= 1) {
+        return n*m -1
     }
-    return tracer.length === 0
+    else return 0
 }
-
-console.log(validBraces( "({})[({})]" )) // true
+console.log(breakChocolate(3,0))
