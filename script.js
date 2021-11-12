@@ -932,21 +932,45 @@ function TheBiggest() {
 //
 // [160, 3, 1719, 19, 11, 13, -21]
 // Should return: 160 (the only even number)
+//
+// function oddOrEvenNumbers(integers) {
+//     let array1 = []
+//     let array2 = []
+//     for (let i=0; i<integers.length; i++) {
+//         if (integers[i] % 2 === 0) {
+//             array1.push(integers[i])
+//         }
+//         if (integers[i] % 2 != 0) {
+//             array2.push(integers[i])
+//         }
+//     }
+//     if (array1.length < array2.length) {
+//         return array1[0]
+//     } else return array2[0]
+//
+// }
+// console.log(oddOrEvenNumbers([160, 3, 1719, 19, 11, 13, -21]))
 
-function oddOrEvenNumbers(integers) {
-    let array1 = []
-    let array2 = []
-    for (let i=0; i<integers.length; i++) {
-        if (integers[i] % 2 === 0) {
-            array1.push(integers[i])
-        }
-        if (integers[i] % 2 != 0) {
-            array2.push(integers[i])
+//=======================================================================================
+// This time no story, no theory. The examples below show you how to write function accum:
+//
+//     Examples:
+// accum("abcd") -> "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt") -> "C-Ww-Aaa-Tttt"
+// The parameter of accum is a string which includes only letters from a..z and A..Z.
+let s = 'RqaEzty'
+
+function accum(s) {
+    let result = ''
+    for (let i = 0; i < s.length; i++) {
+        result += s[i].toUpperCase()
+        result += s[i].toLowerCase().repeat(i)
+        if (i<s.length-1) {
+            result +='-'
         }
     }
-    if (array1.length < array2.length) {
-        return array1[0]
-    } else return array2[0]
-
+    return result
 }
-console.log(oddOrEvenNumbers([160, 3, 1719, 19, 11, 13, -21]))
+
+console.log(accum(s))
