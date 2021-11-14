@@ -1131,25 +1131,42 @@ function TheBiggest() {
 // a or b might be [] or {} (all languages except R, Shell).
 // a or b might be nil or null or None or nothing (except in C++, Crystal, Dart, Elixir, Fortran, F#, Haskell, Nim, OCaml, Pascal, Perl, PowerShell, Prolog, PureScript, R, Racket, Rust, Shell, Swift).
 // If a or b are nil (or null or None, depending on the language), the problem doesn't make sense so return false.
-
-a = [121, 144, 19, 161, 19, 144, 19, 11]
-b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
-
-function validArray(array1, array2) {
-    if (array1.length === 0 || array2.length === 0 || array1.length != array2.length) {
-        return null
-    }
-    for (let i = 0; i < array1.length; i++) {
-        let square = array1[i] * array1[i]
-        for (let a = 0; a < array2.length; a++) {
-
-            if (array2[a] === square) {
-                 array2.splice(array2.indexOf(array2[a]),1)
-
-            if (array2.length === 0 ) {return  true}
-            }
-        }
-    }
-    return false
-}
-console.log (validArray(a,b))
+//лучшее решение:
+// function comp(array1, array2) {
+//     if(array1 == null || array2 == null) return false;
+//     array1.sort((a, b) => a - b); array2.sort((a, b) => a - b);
+//     return array1.map(v => v * v).every((v, i) => v == array2[i]);
+// }
+//
+// a =  [1, 0, 10, 1, 5, 6, 8, 8, 4, 6, 5, 1]
+// b = [36, 1, 64, 25, 64, 1, 36, 25, 1, 100, 16, 1]
+//
+//
+// function validArray(array1, array2) {
+//     if (array1.length === 0 || array2.length === 0 || array1.length != array2.length) {
+//         return false
+//     }
+//     for (let i = 0; i < array1.length; i++) {
+//         let square = array1[i] * array1[i]
+//         for (let a = 0; a < array2.length; a++) {
+//
+//             if (array2[a] === square) {
+//                  array2.splice(array2.indexOf(array2[a]),1)
+//
+//             if (array2.length === 0 ) {return  true}
+//             }
+//         }
+//     }
+//     return false
+// }
+// console.log (validArray(a,b))
+// function comp(a, b) {
+//     return !!a && !!b && a.map(x => x*x).sort().join() == b.sort().join();
+// }
+// const comp = (array1, array2) =>
+//     Array.isArray(array1) &&
+//     Array.isArray(array2) &&
+//     array1.every(item => {
+//         const index = array2.indexOf(Math.pow(item, 2))
+//         return index > -1 ? array2.splice(index, 1) : false
+//     })
