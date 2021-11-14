@@ -995,24 +995,24 @@ function TheBiggest() {
 //
 // I have also created other katas. Take a look if you enjoyed this kata!
 //
-// function five(start, end) {
-//     let result = ''
-//     let count = 1
-//     for(let i=start; i<end; i++) {
-//         let str = String(i)
-//         if(!str.includes('5')){
-//             result+=i
-//             count +=1
-//             if(i<end-1){
-//                 result+=','
-//             }
-//         }
-//
-//     }
-//     console.log(result)
-//     console.log(count)
-// }
-// five(4,17)
+function five(start, end) {
+    let result = ''
+    let count = 0
+    for(let i=start; i<=end; i++) {
+        let str = String(i)
+        if(!str.includes('5')){
+            result+=i
+            count +=1
+            if(i<=end-1){
+                result+=','
+            }
+        }
+
+    }
+    console.log(result)
+    console.log(count)
+}
+five(1,3)
 
 //================================================================================================
 // A Narcissistic Number is a positive number which is the sum of its own digits,
