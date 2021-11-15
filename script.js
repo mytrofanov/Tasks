@@ -1198,16 +1198,16 @@ function TheBiggest() {
 //
 // number([]) // => []
 // number(["a", "b", "c"]) // => ["1: a", "2: b", "3: c"]
-let arrT = ["a", "b", "c"]
-let number = function (array) {
-    let result = []
-    for (let i=0; i<array.length; i++) {
-        result.push(`${i+1}: ${array[i]}`)
-
-    }
-    return result
-}
-console.log(number(arrT))
+// let arrT = ["a", "b", "c"]
+// let number = function (array) {
+//     let result = []
+//     for (let i=0; i<array.length; i++) {
+//         result.push(`${i+1}: ${array[i]}`)
+//
+//     }
+//     return result
+// }
+// console.log(number(arrT))
 
 // best:
 //     var number = function(array) {
@@ -1215,3 +1215,83 @@ console.log(number(arrT))
 //             return (index + 1) + ": " + line;
 //         });
 //     }
+//================================================================================================
+// Jamie is a programmer, and James' girlfriend. She likes diamonds, and wants a diamond string from James.
+// Since James doesn't know how to make this happen, he needs your help.
+//
+//     Task
+// You need to return a string that looks like a diamond shape when printed on the screen,
+// using asterisk (*) characters. Trailing spaces should be removed, and every line must be terminated
+// with a newline character (\n).
+//
+// Return null/nil/None/... if the input is an even number or negative, as it is not possible to print
+// a diamond of even or negative size.
+//
+//     Examples
+// A size 3 diamond:
+//
+//     *
+// ***
+// *
+// ...which would appear as a string of " *\n***\n *\n"
+//
+// A size 5 diamond:
+//
+//     *
+// ***
+// *****
+// ***
+// *
+// ...that is:
+//
+//     "  *\n ***\n*****\n ***\n  *\n"
+// function diamonds(n) {
+//     if (n < 1 || n % 2 === 0) {
+//         return null
+//     }
+//     let blank = ' '
+//     let diamond = '*'
+//     let diam = ''
+//     for (let i=1; i<n; i+=2){
+//         let spacing = blank.repeat((n-i)/2)
+//         diam += spacing + diamond.repeat(i)+ spacing + "\n"
+//     }
+//     diam += diamond.repeat(n) + diam.split('').reverse().join('') + '\n'
+//     return diam
+// }
+//
+// console.log(diamonds(3))
+//
+
+//best: - не ясно как работает модуль числа с умножением
+//     function diamond (n) {
+//         if (n <= 0 || n % 2 === 0) return null
+//         str = ''
+//         for (let i = 0; i < n; i++) {
+//             let len = Math.abs((n-2*i-1)/2)
+//             str += ' '.repeat(len)
+//             str += '*'.repeat(n-2*len)
+//             str += '/n'
+//             console.log(len)
+//         }
+//         return str
+//     }
+// console.log(diamond(5))
+// console.log(Math.abs((5-2)/2))
+
+// function diamond(input) {
+//     const blank = " "
+//     const full = "*"
+//     let output = ""
+//
+//     if (input%2 === 0) {return null;}
+//
+//     for (let i=1;i<input;i+=2) {
+//         spacing = blank.repeat((input-i)/2)
+//         output += spacing + full.repeat(i) + spacing + "\n"
+//     }
+//
+//     output += full.repeat(input) + output.split("").reverse().join("")
+//
+//     console.log(output)
+// }
