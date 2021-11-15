@@ -1179,20 +1179,39 @@ function TheBiggest() {
 // If a value is present in b, all of its occurrences must be removed from the other:
 //
 //     arrayDiff([1,2,2,2,3],[2]) == [1,3]
-let a = [1, 2, 3]
-let b = [1, 2]
+// let a = [1, 2, 3]
+// let b = [1, 2]
+//
+// function arrayDiff(a, b) {
+//     return a.filter(e => !b.includes(e));
+// }
+//
+// console.log(arrayDiff(a, b))
+//========================================================================================
+// Your team is writing a fancy new text editor and you've been tasked with implementing the line numbering.
+//
+// Write a function which takes a list of strings and returns each line prepended by the correct number.
+//
+//     The numbering starts at 1. The format is n: string. Notice the colon and space in between.
+//
+//     Examples:
+//
+// number([]) // => []
+// number(["a", "b", "c"]) // => ["1: a", "2: b", "3: c"]
+let arrT = ["a", "b", "c"]
+let number = function (array) {
+    let result = []
+    for (let i=0; i<array.length; i++) {
+        result.push(`${i+1}: ${array[i]}`)
 
-function arrayDiff(a, b) {
-    return a.filter(e => !b.includes(e));
+    }
+    return result
 }
+console.log(number(arrT))
 
-console.log(arrayDiff(a, b))
-
-// Should pass Basic tests
-// a was [1,2,2], b was [2]: expected [ 1, 2 ] to deeply equal [ 1 ]
-// Completed in 4ms
-// Completed in 8ms
-// Random tests
-// Testing for arrayDiff([-14],[])
-//     Should work for random arrays too: expected [ 18, 3, 18 ] to deeply equal [ 18, 18 ]
-//a was [1,2,3], b was [1,2]: expected [ 1, 2, 3, 3 ] to deeply equal [ 3 ]
+// best:
+//     var number = function(array) {
+//         return array.map(function (line, index) {
+//             return (index + 1) + ": " + line;
+//         });
+//     }
