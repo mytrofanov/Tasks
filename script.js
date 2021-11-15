@@ -995,24 +995,24 @@ function TheBiggest() {
 //
 // I have also created other katas. Take a look if you enjoyed this kata!
 //
-function five(start, end) {
-    let result = ''
-    let count = 0
-    for(let i=start; i<=end; i++) {
-        let str = String(i)
-        if(!str.includes('5')){
-            result+=i
-            count +=1
-            if(i<=end-1){
-                result+=','
-            }
-        }
-
-    }
-    console.log(result)
-    console.log(count)
-}
-five(1,3)
+// function five(start, end) {
+//     let result = ''
+//     let count = 0
+//     for(let i=start; i<=end; i++) {
+//         let str = String(i)
+//         if(!str.includes('5')){
+//             result+=i
+//             count +=1
+//             if(i<=end-1){
+//                 result+=','
+//             }
+//         }
+//
+//     }
+//     console.log(result)
+//     console.log(count)
+// }
+// five(1,3)
 
 //================================================================================================
 // A Narcissistic Number is a positive number which is the sum of its own digits,
@@ -1143,7 +1143,7 @@ five(1,3)
 //
 //
 // function validArray(array1, array2) {
-//     if (array1.length === 0 || array2.length === 0 || array1.length != array2.length) {
+//     if (array1.length === 0 || array2.length === 0 || array1.length != array2.length || array1 == null || array2 == null ) {
 //         return false
 //     }
 //     for (let i = 0; i < array1.length; i++) {
@@ -1152,8 +1152,7 @@ five(1,3)
 //
 //             if (array2[a] === square) {
 //                  array2.splice(array2.indexOf(array2[a]),1)
-//
-//             if (array2.length === 0 ) {return  true}
+// //             if (array2.length === 0 ) {return  true}
 //             }
 //         }
 //     }
@@ -1170,3 +1169,30 @@ five(1,3)
 //         const index = array2.indexOf(Math.pow(item, 2))
 //         return index > -1 ? array2.splice(index, 1) : false
 //     })
+
+// Your goal in this kata is to implement a difference function, which subtracts one list from another
+// and returns the result.
+//
+//     It should remove all values from list a, which are present in list b keeping their order.
+//
+// arrayDiff([1,2],[1]) == [2]
+// If a value is present in b, all of its occurrences must be removed from the other:
+//
+//     arrayDiff([1,2,2,2,3],[2]) == [1,3]
+let a = [1, 2, 3]
+let b = [1, 2]
+
+function arrayDiff(a, b) {
+    return a.filter(e => !b.includes(e));
+}
+
+console.log(arrayDiff(a, b))
+
+// Should pass Basic tests
+// a was [1,2,2], b was [2]: expected [ 1, 2 ] to deeply equal [ 1 ]
+// Completed in 4ms
+// Completed in 8ms
+// Random tests
+// Testing for arrayDiff([-14],[])
+//     Should work for random arrays too: expected [ 18, 3, 18 ] to deeply equal [ 18, 18 ]
+//a was [1,2,3], b was [1,2]: expected [ 1, 2, 3, 3 ] to deeply equal [ 3 ]
