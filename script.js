@@ -1442,13 +1442,72 @@ function TheBiggest() {
 //
 //     sumStrings('1','2') // => '3'
 // A string representation of an integer will contain no characters besides the ten numerals "0" to "9".
+//
+// function sumStrings(a, b) {
+//     let num1 = BigInt(a)
+//     let num2 = BigInt(b)
+//     let sum = BigInt(num1+num2)
+//
+//     return String(sum)
+//
+// }
+// console.log(sumStrings("712569312664357328695151392","8100824045303269669937"))
 
-function sumStrings(a, b) {
-    let num1 = BigInt(a)
-    let num2 = BigInt(b)
-    let sum = BigInt(num1+num2)
+//=======================================================================
+// Основная функция, внутри которой происходят все вычисления. На вход она получает число,
+// для которого нужно найти все простые множители
+// function PrimeNumber(InputNumber) {
+//     // объявляем внутреннюю функцию — она проверяет, простое число ей передали или нет
+//     function isPrime(m) {
+//         // переменная для цикла
+//         var i;
+//         // перебираем все числа от 2 до переданного числа
+//         for (i = 2; i < m; i++) {
+//             // если число делится нацело на любое число из этого диапазона, значит, оно не простое
+//             if (m % i === 0) {
+//                 // возвращаем признак того, что это не простое число
+//                 return false;
+//             }
+//         }
+//         // если мы дошли досюда, значит, ни один делитель не подошёл, поэтому перед нами простое число
+//         return true;
+//     }
+//
+//     // переменная для цикла
+//     var j;
+//     // массив, где будем хранить все найденные простые множители
+//     var sequence = [];
+//     // точно так же проходим все числа от 2 до введённого числа
+//     for (j = 2; j < InputNumber; j++) {
+//         // если введённое число делится нацело и делитель — простое число,
+//         if (InputNumber % j === 0 && isPrime(j)) {
+//             // то добавляем это число в массив с простыми множителями
+//             sequence.push(j);
+//         }
+//     }
+//     // в конце основной функции возвращаем её значение — массив с простыми делителями
+//     return sequence;
+// };
+//
+// // запускаем программу и смотрим результат
+// console.log(PrimeNumber(123456789));
 
-    return String(sum)
+function simpleNumber(num) {
+    function checkNum(check) {
+        for (let i = 2; i < check; i++) {
+            if (check % i === 0) {
+                return false
+            }
+        }
+        return true
+    }
 
+    let simpleNumbers = []
+    for (let j = 2; j < num; j++) {
+        if (num % j === 0 && checkNum(j)) {
+            simpleNumbers.push(j)
+        }
+    }
+    return simpleNumbers
 }
-console.log(sumStrings("712569312664357328695151392","8100824045303269669937"))
+console.log(simpleNumber(18))
