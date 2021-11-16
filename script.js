@@ -1491,23 +1491,23 @@ function TheBiggest() {
 //
 // // запускаем программу и смотрим результат
 // console.log(PrimeNumber(123456789));
-
-function simpleNumber(num) {
-    function checkNum(check) {
-        for (let i = 2; i < check; i++) {
-            if (check % i === 0) {
-                return false
-            }
-        }
-        return true
-    }
-
-    let simpleNumbers = []
-    for (let j = 2; j < num; j++) {
-        if (num % j === 0 && checkNum(j)) {
-            simpleNumbers.push(j)
-        }
-    }
-    return simpleNumbers
-}
-console.log(simpleNumber(18))
+//
+// function simpleNumber(num) {
+//     function checkNum(check) {
+//         for (let i = 2; i < check; i++) {
+//             if (check % i === 0) {
+//                 return false
+//             }
+//         }
+//         return true
+//     }
+//
+//     let simpleNumbers = []
+//     for (let j = 2; j < num; j++) {
+//         if (num % j === 0 && checkNum(j)) {
+//             simpleNumbers.push(j)
+//         }
+//     }
+//     return simpleNumbers
+// }
+// console.log(simpleNumber(86240 ))
