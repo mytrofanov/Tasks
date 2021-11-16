@@ -1359,23 +1359,42 @@ function TheBiggest() {
 //     However it is best to take into consideration that if Desired Principal 'D' is equal to
 //     Principal 'P' this should return 0 Years.
 
-let p = 1000
-let i = 0.05
-let t = 0.18
-let d = 1200
+// let p = 1000
+// let i = 0.05
+// let t = 0.18
+// let d = 1200
+//
+// function disiredSum(principal, interest, tax, desired) {
+//     if (principal === desired) {
+//         return 0
+//     }
+//     let y = 0
+//     for (let years = 1; principal < desired; years++) {
+//
+//         principal += principal * interest * (1 - tax)
+//         y += 1
+//         console.log(principal.toFixed(2))
+//     }
+//     return  y
+// }
+//
+// console.log(disiredSum(p, i, t, d))
 
-function disiredSum(principal, interest, tax, desired) {
-    if (principal === desired) {
-        return 0
-    }
-    let y = 0
-    for (let years = 1; principal < desired; years++) {
+// =========================================================================
+// Write an algorithm that takes an array and moves all of the zeros to the end,
+// preserving the order of the other elements.
+//
+// moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
 
-        principal += principal * interest * (1 - tax)
-        y += 1
-        console.log(principal.toFixed(2))
+let strangeArray = [false,1,0,1,2,0,1,3,"a"]
+function moveZeros(arr) {
+    let newArray = []
+    let zeroArray = []
+    for (let i=0; i<arr.length; i++) {
+        if (arr[i]=== 0 ) {zeroArray.push(arr[i])}
+        if (arr[i]!== 0 ) {newArray.push(arr[i])}
     }
-    return  y
+    return newArray.concat(zeroArray)
 }
 
-console.log(disiredSum(p, i, t, d))
+console.log(moveZeros(strangeArray))
