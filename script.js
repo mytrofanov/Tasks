@@ -1416,21 +1416,39 @@ function TheBiggest() {
 // The most outer function represents the left operand, the most inner function represents the right operand
 // Division should be integer division. For example, this should return 2, not 2.666666...:
 // eight(dividedBy(three()));
+//
+// function zero (func) { return func ? func(0) : 0 }
+// function one (func) { return func ? func(1) : 1 }
+// function two (func) { return func ? func(2) : 2 }
+// function three (func) { return func ? func(3) : 3 }
+// function four (func) { return func ? func(4) : 4 }
+// function five (func) { return func ? func(5) : 5 }
+// function six (func) { return func ? func(6) : 6 }
+// function seven (func) { return func ? func(7) : 7 }
+// function eight (func) { return func ? func(8) : 8 }
+// function nine (func) { return func ? func(9) : 9 }
+//
+// function plus(b) {return function (a) {return a + b} }
+// function minus(b) {return function (a) {return a - b} }
+// function times(b) {return function (a) {return a * b} }
+// function dividedBy(b) {return function (a) { return Math.floor(a/b)} }
+//
+// console.log(eight(dividedBy(three())))
 
-function zero (func) { return func ? func(0) : 0 }
-function one (func) { return func ? func(1) : 1 }
-function two (func) { return func ? func(2) : 2 }
-function three (func) { return func ? func(3) : 3 }
-function four (func) { return func ? func(4) : 4 }
-function five (func) { return func ? func(5) : 5 }
-function six (func) { return func ? func(6) : 6 }
-function seven (func) { return func ? func(7) : 7 }
-function eight (func) { return func ? func(8) : 8 }
-function nine (func) { return func ? func(9) : 9 }
+//==============================================================
+// Given the string representations of two integers, return the string representation of the sum of those integers.
+//
+//     For example:
+//
+//     sumStrings('1','2') // => '3'
+// A string representation of an integer will contain no characters besides the ten numerals "0" to "9".
 
-function plus(b) {return function (a) {return a + b} }
-function minus(b) {return function (a) {return a - b} }
-function times(b) {return function (a) {return a * b} }
-function dividedBy(b) {return function (a) { return Math.floor(a/b)} }
+function sumStrings(a, b) {
+    let num1 = BigInt(a)
+    let num2 = BigInt(b)
+    let sum = BigInt(num1+num2)
 
-console.log(eight(dividedBy(three())))
+    return String(sum)
+
+}
+console.log(sumStrings("712569312664357328695151392","8100824045303269669937"))
