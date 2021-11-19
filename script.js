@@ -1530,17 +1530,49 @@ function TheBiggest() {
 //
 // Note:
 //     Focus attention on efficiency
-
-function dblLinear(n) {
-    let u = [1]
-    let point2 = 0
-    let point3 = 0
-    for (let i=1; i<=n; i++) {
-        u[i] = Math.min(2*u[point2]+1,3*u[point3]+1)
-        if (u[i] === 2*u[point2]+1) {point2++}
-        if (u[i] === 3*u[point3]+1) {point3++}
-
-    }
-   return u[n]
-}
-console.log(dblLinear(100))
+//
+// function dblLinear(n) {
+//     let u = [1]
+//     let point2 = 0
+//     let point3 = 0
+//     for (let i=1; i<=n; i++) {
+//         u[i] = Math.min(2*u[point2]+1,3*u[point3]+1)
+//         if (u[i] === 2*u[point2]+1) {point2++}
+//         if (u[i] === 3*u[point3]+1) {point3++}
+//
+//     }
+//    return u[n]
+// }
+// console.log(dblLinear(100))
+//==========================================================================
+// let corrections = [1, 12, 7, 1]
+// let cells = [8, 4, 6, 2, 2]
+//
+// function rocket(corrections, cells) {
+//     let cellsBalance = [...cells]
+//     let main_engine = []
+//     let sec_engine = []
+//     let fullPower = 1
+//     let halfPower = 0.5
+//     let velocity = 0
+//
+//     for (let i = 0; i < corrections.length; i++) {
+//
+//         for (let j = 0; j < cellsBalance.length; j++) {
+//             //let bestFullPower = Math.max(cellsBalance[j] <= corrections[i])
+//             //let bestHalfPower = Math.max(cellsBalance[j] * halfPower <= corrections[i])
+//             // let bestDuplex = Math.max (все варианты сумм элементов cells)
+//         }
+//     }
+//
+//     console.log('cellsBalance:')
+//     console.log(cellsBalance)
+//     console.log('main_engine:')
+//     console.log(main_engine)
+//     console.log('sec_engine:')
+//     console.log(sec_engine)
+//     console.log('delta velocity= ' + velocity)
+//
+// }
+//
+// rocket(corrections, cells)
