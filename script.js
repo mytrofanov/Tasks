@@ -1584,12 +1584,9 @@ function rocket(corrections, cells) {
     }
 
 
-
-
-
     //========== looking for match in easy population
 
-    for (let i = 0; i <temp_corrections.length; i++) {
+    for (let i = 0; i < temp_corrections.length; i++) {
 
         for (let j = 0; j < temp_main_thruster.length; j++) {
             if (temp_corrections[i] === temp_main_thruster[j]) { //looking for match for main engine
@@ -1610,9 +1607,9 @@ function rocket(corrections, cells) {
     }
     //========== looking for in mutations of cells
     mutant(temp_main_thruster, temp_sec_thruster)
-    for (let i=0; i<temp_corrections.length; i++) {
-        for (let j=0; j<mutatedArray.length; j++) {
-            if (temp_corrections[i] === mutatedArray[j] && temp_corrections[i] !== 0){
+    for (let i = 0; i < temp_corrections.length; i++) {
+        for (let j = 0; j < mutatedArray.length; j++) {
+            if (temp_corrections[i] === mutatedArray[j] && temp_corrections[i] !== 0) {
                 console.log('mutatedArray has number:' + mutatedArray[j])
 
                 function mutant2(array1, array2) {
@@ -1622,22 +1619,43 @@ function rocket(corrections, cells) {
                             let indexB = array2.indexOf(array2[b])
                             if (indexA !== indexB) {
                                 let mutation = array1[a] + array2[b]
-                               if (mutation === temp_corrections[i] ) {
-                                   main_thruster[i] = array1[a]
-                                   sec_thruster[i] = array2[b]
-                                   temp_corrections[i] = 0
-                               }
+                                if (mutation === temp_corrections[i]) {
+                                    console.log('this number consists of ' + array1[a] + ' and ' + array2[b])
+                                    main_thruster[i] = array1[a]
+                                    sec_thruster[i] = array2[b]
+                                    temp_corrections[i] = 0
+                                    temp_main_thruster.splice(temp_main_thruster.indexOf(array1[a]), 1)
+                                    temp_main_thruster.splice(temp_main_thruster.indexOf(array2[a] * 2), 1)
+                                    temp_sec_thruster.splice(temp_sec_thruster.indexOf(array1[a]), 1)
+                                    temp_sec_thruster.splice(temp_sec_thruster.indexOf(array2[b]), 1)
+
+                                }
+
                             }
                         }
                     }
                 }
+
                 mutant2(temp_main_thruster, temp_sec_thruster)
+
             }
 
+        }
+    }
+
+// ========== checking if corrections are needed
+    if (temp_corrections.reduce((a, b) => a + b) > 0) {
+        for (let i = 0; i < temp_corrections.length; i++) {
+            for (let j = 0; j < temp_main_thruster.length; j++) {
+                if (temp_corrections[i] > 0 && temp_corrections[i] >= temp_main_thruster[j]) {
+                    main_thruster[i] = temp_main_thruster[j]
+                    temp_main_thruster.splice(temp_main_thruster.indexOf(temp_main_thruster[j]))
+                    temp_sec_thruster.splice(temp_sec_thruster.indexOf(temp_main_thruster[j]*halfPower))
+                }
             }
         }
-
-
+    }
+    velocity = main_thruster.reduce((a,b) =>a+b) + sec_thruster.reduce((a,b) => a+b)
 
     console.log('corrections:')
     console.log(corrections)
