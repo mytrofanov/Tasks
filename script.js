@@ -1545,34 +1545,115 @@ function TheBiggest() {
 // }
 // console.log(dblLinear(100))
 //==========================================================================
-// let corrections = [1, 12, 7, 1]
-// let cells = [8, 4, 6, 2, 2]
+let corrections = [1, 12, 7, 1]
+let cells = [8, 4, 6, 2, 2]
+
+function rocket(corrections, cells) {
+    let temp_corrections = [...corrections]
+    let temp_main_thruster = []
+    let temp_sec_thruster = []
+    let main_thruster = []
+    let sec_thruster = []
+    let fullPower = 1
+    let halfPower = 0.5
+    let velocity = 0
+    //========== first step: creating easy population
+    temp_main_thruster.push(...cells)
+    for (let i = 0; i < cells.length; i++) {
+        temp_sec_thruster.push(cells[i] * halfPower)
+    }
+
+
+    //========== looking for match in easy population
+    for (let i=0; i<temp_corrections.length; i++) {
+       for (let j=0; j<temp_main_thruster.length; j++) {
+
+           if (temp_corrections[i] === temp_main_thruster[j]) { //looking for match for main engine
+               main_thruster.push(temp_main_thruster[j])
+               sec_thruster.push(0)  //we use only main engine
+               temp_main_thruster.splice(temp_main_thruster.indexOf(temp_main_thruster[j]), 1)
+               temp_sec_thruster.splice(temp_sec_thruster.indexOf(temp_sec_thruster[j]), 1)//decrementing cells
+               temp_corrections.splice(temp_corrections.indexOf(temp_corrections[i]),1)
+           }
+           if (temp_corrections[i] === temp_sec_thruster[j]) { //looking for match for sec_engine
+               sec_thruster.push(temp_sec_thruster[j])
+               main_thruster.push(0) //we use only sec_engine
+               let index = temp_main_thruster.indexOf(temp_main_thruster[j])
+               console.log(index)
+               temp_sec_thruster.splice(index,1) //decrementing cells
+
+               temp_main_thruster.splice(index, 1)
+               temp_corrections.splice(temp_corrections.indexOf(temp_corrections[i]),1)
+           }
+       }
+    }
+
+    console.log('corrections:')
+    console.log(corrections)
+
+    console.log('temp_corrections:')
+    console.log(temp_corrections)
+    console.log('temp_main_thruster:')
+    console.log(temp_main_thruster)
+    console.log('temp_sec_thruster:')
+    console.log(temp_sec_thruster)
+    console.log('cells:')
+    console.log(cells)
+    console.log('main_thruster:')
+    console.log(main_thruster)
+    console.log('sec_thruster:')
+    console.log(sec_thruster)
+    console.log('delta velocity= ' + velocity)
+
+}
+
+rocket(corrections, cells)
+//================================================================================================================
+// Alright, detective, one of our colleagues successfully observed our target person, Robby the robber.
+// We followed him to a secret warehouse, where we assume to find all the stolen stuff. The door to this warehouse
+// is secured by an electronic combination lock. Unfortunately our spy isn't sure about the PIN he saw,
+// when Robby entered it.
 //
-// function rocket(corrections, cells) {
-//     let cellsBalance = [...cells]
-//     let main_engine = []
-//     let sec_engine = []
-//     let fullPower = 1
-//     let halfPower = 0.5
-//     let velocity = 0
+// The keypad has the following layout:
 //
-//     for (let i = 0; i < corrections.length; i++) {
+// ┌───┬───┬───┐
+// │ 1 │ 2 │ 3 │
+// ├───┼───┼───┤
+// │ 4 │ 5 │ 6 │
+// ├───┼───┼───┤
+// │ 7 │ 8 │ 9 │
+// └───┼───┼───┘
+//     │ 0 │
+//     └───┘
+// He noted the PIN 1357, but he also said, it is possible that each of the digits he saw could actually
+// be another adjacent digit (horizontally or vertically, but not diagonally). E.g.
+// instead of the 1 it could also be the 2 or 4. And instead of the 5 it could also be the 2, 4, 6 or 8.
 //
-//         for (let j = 0; j < cellsBalance.length; j++) {
-//             //let bestFullPower = Math.max(cellsBalance[j] <= corrections[i])
-//             //let bestHalfPower = Math.max(cellsBalance[j] * halfPower <= corrections[i])
-//             // let bestDuplex = Math.max (все варианты сумм элементов cells)
-//         }
-//     }
+// He also mentioned, he knows this kind of locks. You can enter an unlimited amount of wrong PINs,
+// they never finally lock the system or sound the alarm. That's why we can try out all possible (*) variations.
 //
-//     console.log('cellsBalance:')
-//     console.log(cellsBalance)
-//     console.log('main_engine:')
-//     console.log(main_engine)
-//     console.log('sec_engine:')
-//     console.log(sec_engine)
-//     console.log('delta velocity= ' + velocity)
+// * possible in sense of: the observed PIN itself and all variations considering the adjacent digits
+//
+// Can you help us to find all those variations? It would be nice to have a function, that returns an array
+// (or a list in Java/Kotlin and C#) of all variations for an observed PIN with a length of 1 to 8 digits.
+// We could name the function getPINs (get_pins in python, GetPINs in C#). But please note that all PINs,
+// the observed one and also the results, must be strings, because of potentially leading '0's.
+// We already prepared some test cases for you.
+//
+//
+//
+// function getPins(observed) {
 //
 // }
+
+// describe('example tests', function() {
+//     var expectations = {
+//         "8": ["5", "7", "8", "9", "0"],
+//         "11": ["11", "22", "44", "12", "21", "14", "41", "24", "42"],
+//         "369": ["339","366","399","658","636","258","268","669","668","266","369","398","256","296","259","368","638","396","238","356","659","639","666","359","336","299","338","696","269","358","656","698","699","298","236","239"]
+//     };
 //
-// rocket(corrections, cells)
+//     for (var pin in expectations) {
+//         Test.assertSimilar(getPINs(pin).sort(), expectations[pin].sort(), 'PIN: ' + pin);
+//     }
+// });
