@@ -1651,6 +1651,7 @@ function rocket(corrections, cells) {
                     main_thruster[i] = temp_main_thruster[j]
                     temp_main_thruster.splice(temp_main_thruster.indexOf(temp_main_thruster[j]))
                     temp_sec_thruster.splice(temp_sec_thruster.indexOf(temp_main_thruster[j]*halfPower))
+                    temp_corrections[i] = 0
                 }
             }
         }
