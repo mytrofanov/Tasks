@@ -1552,8 +1552,8 @@ function rocket(corrections, cells) {
     let temp_corrections = [...corrections]
     let temp_main_thruster = []
     let temp_sec_thruster = []
-    let main_thruster = []
-    let sec_thruster = []
+    let main_thruster = new Array(corrections.length)
+    let sec_thruster = new Array(corrections.length)
     let fullPower = 1
     let halfPower = 0.5
     let velocity = 0
@@ -1564,15 +1564,16 @@ function rocket(corrections, cells) {
     for (let i = 0; i < cells.length; i++) {
         temp_sec_thruster.push(cells[i] * halfPower)
     }
+
     //========== creating mutations
     function mutant(array1, array2) {
-        for (let a=0; a<array1.length; a++) {
+        for (let a = 0; a < array1.length; a++) {
             let indexA = array1.indexOf(array1[a])
-            for (let b=0; b<array2.length; b++) {
+            for (let b = 0; b < array2.length; b++) {
                 let indexB = array2.indexOf(array2[b])
 
-                if (indexA!==indexB) {
-                    let mutation = array1[a]+array2[b]
+                if (indexA !== indexB) {
+                    let mutation = array1[a] + array2[b]
                     //console.log('temp_main_thruster[a] + temp_sec_thruster[b]:     ' + temp_main_thruster[a] + ' + ' + temp_sec_thruster[b] + ' = ' + mutation)
                     mutatedArray.push(mutation)
 
@@ -1582,37 +1583,36 @@ function rocket(corrections, cells) {
     }
 
 
-    mutant(temp_main_thruster,temp_sec_thruster)
+    mutant(temp_main_thruster, temp_sec_thruster)
 
 
     //========== looking for match in easy population
-    for (let i=0; i<temp_corrections.length; i++) {
-       for (let j=0; j<temp_main_thruster.length; j++) {
 
-           if (temp_corrections[i] === temp_main_thruster[j]) { //looking for match for main engine
-               main_thruster.push(temp_main_thruster[j])
-               sec_thruster.push(0)  //we use only main engine
-               let index = temp_main_thruster.indexOf(temp_main_thruster[j])
-               temp_main_thruster.splice(index, 1)
-               temp_sec_thruster.splice(index, 1)//decrementing cells
-               temp_corrections.splice(temp_corrections.indexOf(temp_corrections[i]),1)
-           }
-           if (temp_corrections[i] === temp_sec_thruster[j]) { //looking for match for sec_engine
-               sec_thruster.push(temp_sec_thruster[j])
-               main_thruster.push(0) //we use only sec_engine
-               let index = temp_sec_thruster.indexOf(temp_sec_thruster[j])
-               temp_sec_thruster.splice(index,1) //decrementing cells
-               temp_main_thruster.splice(index, 1)
-               temp_corrections.splice(temp_corrections.indexOf(temp_corrections[i]),1)
-           }
-        //========== creating mutations of cells
+    for (let i = 0; i <temp_corrections.length; i++) {
+        console.log(i)
+        // let correctionIndex = temp_corrections.indexOf(temp_corrections[i])
+        console.log('correctionIndex = ' + i + ' correction = ' + corrections[i])
+        for (let j = 0; j < temp_main_thruster.length; j++) {
+            if (temp_corrections[i] === temp_main_thruster[j]) { //looking for match for main engine
+                main_thruster[i] = temp_main_thruster[j]
+                let index = temp_main_thruster.indexOf(temp_main_thruster[j])
+                // temp_main_thruster.splice(index, 1)
+                // temp_sec_thruster.splice(index, 1)//decrementing cells
+                // temp_corrections.splice(correctionIndex, 1)
+            }
+            if (temp_corrections[i] === temp_sec_thruster[j]) { //looking for match for sec_engine
+                sec_thruster[i] = temp_sec_thruster[j]
+                // let index = temp_sec_thruster.indexOf(temp_sec_thruster[j])
+                //temp_sec_thruster.splice(index, 1) //decrementing cells
+                // temp_main_thruster.splice(index, 1)
+                // temp_corrections.splice(correctionIndex, 1)
+            }
+            //========== creating mutations of cells
 
 
-       }
+        }
 
     }
-
-
 
 
     console.log('corrections:')
@@ -1649,7 +1649,6 @@ rocket(corrections, cells)
 //
 //     console.log(result)
 // }
-
 
 
 //================================================================================================================
