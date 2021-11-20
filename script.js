@@ -1565,22 +1565,24 @@ function rocket(corrections, cells) {
         temp_sec_thruster.push(cells[i] * halfPower)
     }
     //========== creating mutations
-    let array1= [...temp_main_thruster]
-    let array2= [...temp_sec_thruster]
+    function mutant(array1, array2) {
+        for (let a=0; a<array1.length; a++) {
+            let indexA = array1.indexOf(array1[a])
+            for (let b=0; b<array2.length; b++) {
+                let indexB = array2.indexOf(array2[b])
 
-    for (let a=0; a<array1.length; a++) {
-        let indexA = array1.indexOf(array1[a])
-        for (let b=0; b<array2.length; b++) {
-            let indexB = array2.indexOf(array2[b])
+                if (indexA!==indexB) {
+                    let mutation = array1[a]+array2[b]
+                    console.log('temp_main_thruster[a] + temp_sec_thruster[b]:     ' + temp_main_thruster[a] + ' + ' + temp_sec_thruster[b] + ' = ' + mutation)
+                    mutatedArray.push(mutation)
 
-            if (indexA!==indexB) {
-                let mutation = array1[a]+array2[b]
-                console.log('temp_main_thruster[a] + temp_sec_thruster[b]:     ' + temp_main_thruster[a] + ' + ' + temp_sec_thruster[b] + ' = ' + mutation)
-                mutatedArray.push(mutation)
-
+                }
             }
         }
     }
+
+
+
 
     //========== looking for match in easy population
     for (let i=0; i<temp_corrections.length; i++) {
@@ -1606,7 +1608,12 @@ function rocket(corrections, cells) {
 
 
        }
+
     }
+
+    mutant(temp_main_thruster,temp_sec_thruster)
+    console.log(mutatedArray)
+
 
     console.log('corrections:')
     console.log(corrections)
