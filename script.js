@@ -1559,6 +1559,9 @@ function rocket(corrections, cells) {
     let velocity = 0
     let mutatedArray = []
 
+    main_thruster.fill(0)
+    sec_thruster.fill(0)
+
     //========== first step: creating easy population
     temp_main_thruster.push(...cells)
     for (let i = 0; i < cells.length; i++) {
@@ -1571,48 +1574,69 @@ function rocket(corrections, cells) {
             let indexA = array1.indexOf(array1[a])
             for (let b = 0; b < array2.length; b++) {
                 let indexB = array2.indexOf(array2[b])
-
                 if (indexA !== indexB) {
                     let mutation = array1[a] + array2[b]
                     //console.log('temp_main_thruster[a] + temp_sec_thruster[b]:     ' + temp_main_thruster[a] + ' + ' + temp_sec_thruster[b] + ' = ' + mutation)
                     mutatedArray.push(mutation)
-
                 }
             }
         }
     }
 
 
-    mutant(temp_main_thruster, temp_sec_thruster)
+
 
 
     //========== looking for match in easy population
 
     for (let i = 0; i <temp_corrections.length; i++) {
-        console.log(i)
-        // let correctionIndex = temp_corrections.indexOf(temp_corrections[i])
-        console.log('correctionIndex = ' + i + ' correction = ' + temp_corrections[i])
+
         for (let j = 0; j < temp_main_thruster.length; j++) {
             if (temp_corrections[i] === temp_main_thruster[j]) { //looking for match for main engine
                 main_thruster[i] = temp_main_thruster[j]
                 let index = temp_main_thruster.indexOf(temp_main_thruster[j])
                 temp_main_thruster.splice(index, 1)
                 temp_sec_thruster.splice(index, 1)//decrementing cells
-
+                temp_corrections[i] = 0
             }
             if (temp_corrections[i] === temp_sec_thruster[j]) { //looking for match for sec_engine
                 sec_thruster[i] = temp_sec_thruster[j]
                 let index = temp_sec_thruster.indexOf(temp_sec_thruster[j])
                 temp_sec_thruster.splice(index, 1) //decrementing cells
                 temp_main_thruster.splice(index, 1)
+                temp_corrections[i] = 0
+            }
+        }
+    }
+    //========== looking for in mutations of cells
+    mutant(temp_main_thruster, temp_sec_thruster)
+    for (let i=0; i<temp_corrections.length; i++) {
+        for (let j=0; j<mutatedArray.length; j++) {
+            if (temp_corrections[i] === mutatedArray[j] && temp_corrections[i] !== 0){
+                console.log('mutatedArray has number:' + mutatedArray[j])
+
+                function mutant2(array1, array2) {
+                    for (let a = 0; a < array1.length; a++) {
+                        let indexA = array1.indexOf(array1[a])
+                        for (let b = 0; b < array2.length; b++) {
+                            let indexB = array2.indexOf(array2[b])
+                            if (indexA !== indexB) {
+                                let mutation = array1[a] + array2[b]
+                               if (mutation === temp_corrections[i] ) {
+                                   main_thruster[i] = array1[a]
+                                   sec_thruster[i] = array2[b]
+                                   temp_corrections[i] = 0
+                               }
+                            }
+                        }
+                    }
+                }
+                mutant2(temp_main_thruster, temp_sec_thruster)
+            }
 
             }
-            //========== creating mutations of cells
-
-
         }
 
-    }
 
 
     console.log('corrections:')
