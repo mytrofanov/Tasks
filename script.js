@@ -1573,7 +1573,7 @@ function rocket(corrections, cells) {
 
                 if (indexA!==indexB) {
                     let mutation = array1[a]+array2[b]
-                    console.log('temp_main_thruster[a] + temp_sec_thruster[b]:     ' + temp_main_thruster[a] + ' + ' + temp_sec_thruster[b] + ' = ' + mutation)
+                    //console.log('temp_main_thruster[a] + temp_sec_thruster[b]:     ' + temp_main_thruster[a] + ' + ' + temp_sec_thruster[b] + ' = ' + mutation)
                     mutatedArray.push(mutation)
 
                 }
@@ -1582,6 +1582,7 @@ function rocket(corrections, cells) {
     }
 
 
+    mutant(temp_main_thruster,temp_sec_thruster)
 
 
     //========== looking for match in easy population
@@ -1611,8 +1612,7 @@ function rocket(corrections, cells) {
 
     }
 
-    mutant(temp_main_thruster,temp_sec_thruster)
-    console.log(mutatedArray)
+
 
 
     console.log('corrections:')
