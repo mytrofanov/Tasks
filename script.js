@@ -1591,21 +1591,21 @@ function rocket(corrections, cells) {
     for (let i = 0; i <temp_corrections.length; i++) {
         console.log(i)
         // let correctionIndex = temp_corrections.indexOf(temp_corrections[i])
-        console.log('correctionIndex = ' + i + ' correction = ' + corrections[i])
+        console.log('correctionIndex = ' + i + ' correction = ' + temp_corrections[i])
         for (let j = 0; j < temp_main_thruster.length; j++) {
             if (temp_corrections[i] === temp_main_thruster[j]) { //looking for match for main engine
                 main_thruster[i] = temp_main_thruster[j]
                 let index = temp_main_thruster.indexOf(temp_main_thruster[j])
-                // temp_main_thruster.splice(index, 1)
-                // temp_sec_thruster.splice(index, 1)//decrementing cells
-                // temp_corrections.splice(correctionIndex, 1)
+                temp_main_thruster.splice(index, 1)
+                temp_sec_thruster.splice(index, 1)//decrementing cells
+
             }
             if (temp_corrections[i] === temp_sec_thruster[j]) { //looking for match for sec_engine
                 sec_thruster[i] = temp_sec_thruster[j]
-                // let index = temp_sec_thruster.indexOf(temp_sec_thruster[j])
-                //temp_sec_thruster.splice(index, 1) //decrementing cells
-                // temp_main_thruster.splice(index, 1)
-                // temp_corrections.splice(correctionIndex, 1)
+                let index = temp_sec_thruster.indexOf(temp_sec_thruster[j])
+                temp_sec_thruster.splice(index, 1) //decrementing cells
+                temp_main_thruster.splice(index, 1)
+
             }
             //========== creating mutations of cells
 
