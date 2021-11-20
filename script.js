@@ -1557,12 +1557,30 @@ function rocket(corrections, cells) {
     let fullPower = 1
     let halfPower = 0.5
     let velocity = 0
+    let mutatedArray = []
+
     //========== first step: creating easy population
     temp_main_thruster.push(...cells)
     for (let i = 0; i < cells.length; i++) {
         temp_sec_thruster.push(cells[i] * halfPower)
     }
+    //========== creating mutations
+    let array1= [...temp_main_thruster]
+    let array2= [...temp_sec_thruster]
 
+    for (let a=0; a<array1.length; a++) {
+        let indexA = array1.indexOf(array1[a])
+        for (let b=0; b<array2.length; b++) {
+            let indexB = array2.indexOf(array2[b])
+
+            if (indexA!==indexB) {
+                let mutation = array1[a]+array2[b]
+                console.log('temp_main_thruster[a] + temp_sec_thruster[b]:     ' + temp_main_thruster[a] + ' + ' + temp_sec_thruster[b] + ' = ' + mutation)
+                mutatedArray.push(mutation)
+
+            }
+        }
+    }
 
     //========== looking for match in easy population
     for (let i=0; i<temp_corrections.length; i++) {
@@ -1571,20 +1589,22 @@ function rocket(corrections, cells) {
            if (temp_corrections[i] === temp_main_thruster[j]) { //looking for match for main engine
                main_thruster.push(temp_main_thruster[j])
                sec_thruster.push(0)  //we use only main engine
-               temp_main_thruster.splice(temp_main_thruster.indexOf(temp_main_thruster[j]), 1)
-               temp_sec_thruster.splice(temp_sec_thruster.indexOf(temp_sec_thruster[j]), 1)//decrementing cells
+               let index = temp_main_thruster.indexOf(temp_main_thruster[j])
+               temp_main_thruster.splice(index, 1)
+               temp_sec_thruster.splice(index, 1)//decrementing cells
                temp_corrections.splice(temp_corrections.indexOf(temp_corrections[i]),1)
            }
            if (temp_corrections[i] === temp_sec_thruster[j]) { //looking for match for sec_engine
                sec_thruster.push(temp_sec_thruster[j])
                main_thruster.push(0) //we use only sec_engine
-               let index = temp_main_thruster.indexOf(temp_main_thruster[j])
-               console.log(index)
+               let index = temp_sec_thruster.indexOf(temp_sec_thruster[j])
                temp_sec_thruster.splice(index,1) //decrementing cells
-
                temp_main_thruster.splice(index, 1)
                temp_corrections.splice(temp_corrections.indexOf(temp_corrections[i]),1)
            }
+        //========== creating mutations of cells
+
+
        }
     }
 
@@ -1597,17 +1617,34 @@ function rocket(corrections, cells) {
     console.log(temp_main_thruster)
     console.log('temp_sec_thruster:')
     console.log(temp_sec_thruster)
-    console.log('cells:')
+    console.log('cells on start:')
     console.log(cells)
     console.log('main_thruster:')
     console.log(main_thruster)
     console.log('sec_thruster:')
     console.log(sec_thruster)
     console.log('delta velocity= ' + velocity)
+    console.log('mutatedArray=')
+    console.log(mutatedArray)
 
 }
 
 rocket(corrections, cells)
+
+// let array1 = [2,1,3]
+// let array2 = [4,5,6]
+// let result = []
+// for (let i=0; i<array1.length; i++) {
+//     for(let j = 0; j<array2.length; j++) {
+//         console.log(array1[i] + ' + ' + array2[j] )
+//         result.push(array1[i] + array2[j])
+//     }
+//
+//     console.log(result)
+// }
+
+
+
 //================================================================================================================
 // Alright, detective, one of our colleagues successfully observed our target person, Robby the robber.
 // We followed him to a secret warehouse, where we assume to find all the stolen stuff. The door to this warehouse
