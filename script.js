@@ -1729,50 +1729,108 @@ function TheBiggest() {
 //
 //
 //
-let observed = 1357
+// let observed = 1357
 
-function getPins(observed) {
-    let neighbors = {
-        '0': ['8'],
-        '1': ['2', '4'],
-        '2': ['1', '3', '5'],
-        '3': ['2', '6'],
-        '4': ['1', '5', '7'],
-        '5': ['2', '4', '6', '8'],
-        '6': ['3', '5', '9'],
-        '7': ['4', '8'],
-        '8': ['5', '7', '9', '0'],
-        '9': ['6', '8']
-    }
-    let strDigits = observed.toString().split('')
-    let combos = []
+// function getPins(observed) {
+//     let neighbors = {
+//         '0': ['8'],
+//         '1': ['2', '4'],
+//         '2': ['1', '3', '5'],
+//         '3': ['2', '6'],
+//         '4': ['1', '5', '7'],
+//         '5': ['2', '4', '6', '8'],
+//         '6': ['3', '5', '9'],
+//         '7': ['4', '8'],
+//         '8': ['5', '7', '9', '0'],
+//         '9': ['6', '8']
+//     }
+//     let strDigits = observed.toString().split('')
+//     let combos = []
+//
+//     //depth first - обход в глубину
+//     function getCombos(digits, idx, curCombo) {
+//         //get possible candidates
+//         let curDigit = digits[idx]
+//         let candidates = new Set(neighbors[curDigit])
+//         candidates.add(curDigit)
+//
+//         console.log(digits, idx, curCombo, candidates, curDigit)
+//
+//
+//         candidates.forEach(idx == digits.length - 1 ? reachedEnd : goDeeper)
+//
+//         function reachedEnd(candidate) {
+//             combos.push(curCombo + candidate)
+//         }
+//
+//         function goDeeper(candidate) {
+//             getCombos(digits, idx + 1, curCombo + candidate)
+//         }
+//     }
+//
+//     getCombos(strDigits, 0, '')
+//     return combos
+// }
+//
+// console.log(getPins(observed))
 
-    //depth first - обход в глубину
-    function getCombos(digits, idx, curCombo) {
-        //get possible candidates
-        let curDigit = digits[idx]
-        let candidates = new Set(neighbors[curDigit])
-        candidates.add(curDigit)
+// =================================================================== pin test
+// let pinCode = 1357
+// function pin(observed) {
+//     let neighbors = {
+//         '0': ['8'],
+//         '1': ['2', '4'],
+//         '2': ['1', '3', '5'],
+//         '3': ['2', '6'],
+//         '4': ['1', '5', '7'],
+//         '5': ['2', '4', '6', '8'],
+//         '6': ['3', '5', '9'],
+//         '7': ['4', '8'],
+//         '8': ['5', '7', '9', '0'],
+//         '9': ['6', '8']
+//     }
+//     let variants = []
+//     let strPin = observed.toString().split('')
+//
+//     function getVariants(digit, index, currentCombination) {
+//         let currenDigit = digit[index]
+//         let candidates = new Set (neighbors[currenDigit])
+//         candidates.add(currenDigit)
+//         // console.log(digit,index,currenDigit,candidates)
+//
+//         candidates.forEach(index == strPin.length-1 ? goToEnd : goDeeper)
+//
+//         function goToEnd(candidate) {
+//             variants.push(currentCombination+candidate)
+//         }
+//         function goDeeper(candidate) {
+//             getVariants(strPin, index+1, currentCombination+candidate)
+//         }
+//     }
+//     getVariants(strPin,0,'')
+//     console.log(variants)
+// }
+// pin(pinCode)
 
-        // console.log(digits, idx, curCombo, candidates)
+//=========== лучшее решение ПИН кода
+// function getPINs(observed) {
+//     return observed.split('')
+//         .map( t => ({
+//             '0': [ '0', '8' ],
+//             '1': [ '1', '2', '4' ],
+//             '2': [ '1', '2', '3', '5' ],
+//             '3': [ '2', '3', '6' ],
+//             '4': [ '1', '4', '5', '7' ],
+//             '5': [ '2', '4', '5', '6', '8' ],
+//             '6': [ '3', '5', '6', '9' ],
+//             '7': [ '4', '7', '8' ],
+//             '8': [ '5', '7', '8', '9', '0' ],
+//             '9': [ '6', '8', '9' ]
+//         }[t]))
+//         .reduce((pre, cur)=> [].concat.apply([], pre.map(t => cur.map(g => t + g))));
+// }
+// getPINs(1357)
 
-
-        candidates.forEach(idx == digits.length - 1 ? reachedEnd : goDeeper)
-
-        function reachedEnd(candidate) {
-            combos.push(curCombo + candidate)
-        }
-
-        function goDeeper(candidate) {
-            getCombos(digits, idx + 1, curCombo + candidate)
-        }
-    }
-
-    getCombos(strDigits, 0, '')
-    return combos
-}
-
-console.log(getPins(observed))
 
 // describe('example tests', function() {
 //     var expectations = {
@@ -1785,3 +1843,5 @@ console.log(getPins(observed))
 //         Test.assertSimilar(getPINs(pin).sort(), expectations[pin].sort(), 'PIN: ' + pin);
 //     }
 // });
+
+
