@@ -1860,10 +1860,123 @@ function TheBiggest() {
 // countChange(10, [5,2,3]) // => 4
 // countChange(11, [5,7]) //  => 0
 
-let countChange = function(money, coins) {
-    // your implementation here
+
+
+
+//========== best:
+//
+// let result = []
+// let countChange = function(money, coins) {
+//     if(money < 0 || coins.length === 0)
+//         return 0
+//     else if(money === 0)
+//         return 1
+//     else
+//
+//         return countChange(money - coins[0], coins) + countChange(money, coins.slice(1))
+// }
+// countChange(4,[1,2])
+// console.log(result)
+
+// let coins = [1,2]
+//     let countChange = (amount, coins) => {
+//         let [coin, ...rest] = coins
+//         if (!coin)       return 0
+//         if (amount <  0) return 0
+//         if (amount == 0) return 1
+//         return countChange(amount - coin, coins) +
+//             countChange(amount, rest)
+//     }
+//     console.log(countChange(4,coins))
+
+
+
+   // /* Dynamic Programming javascript implementation of Coin
+  //  Change problem */
+
+//     function countWays(S , m , n)
+//     {
+//         //Time complexity of this function: O(mn)
+//         //Space Complexity of this function: O(n)
+//
+//         // table[i] will be storing the number of solutions
+//         // for value i. We need n+1 rows as the table is
+//         // constructed in bottom up manner using the base
+//         // case (n = 0)
+//         // Initialize all table values as 0
+//         //O(n)
+//         let table = Array(n+1).fill(0);
+//
+//
+//         // Base case (If given value is 0)
+//         table[0] = 1;
+//
+//         // Pick all coins one by one and update the table
+//         // values after the index greater than or equal to
+//         // the value of the picked coin
+//         for (let i=0; i<m; i++)
+//             for (let j=S[i]; j<=n; j++)
+//                 table[j] += table[j-S[i]];
+//
+//         return table[n];
+//     }
+//
+// // Driver Function to test above function
+// let coins = [1, 2];
+// let m = coins.length;
+// let n = 4;
+// console.log(countWays(coins, m, n));
+//  ============================================= для Stepic
+//Файл STDIN (стандартный ввод) по умолчанию "связан" с клавиатурой - все что вы печатаете на клавиатуре,
+// попадает туда. Файл STDOUT (стандартный вывод) по умолчанию "связан" с монитором - все, что вы запишите
+// в него, вы увидите на экране. Файл STDERR (стандартный вывод ошибок) - это копия STDOUT.
+// let stdin = process.openStdin();
+// stdin.on('data', function(data){
+//     var n = data.toString().split(" ");
+//
+//     // 3 СТРОЧКИ ВЫШЕ НУЖНО ДЛЯ ПЕРЕДАЧИ ВВОДА В ПЕРЕМЕННУЮ -> n
+//     function fibo(n) {
+//         let fibonacci = [0,1,1,2,3,5]
+//         if (n<0) {return  0}
+//         if (n>0 && n<=6) {return fibonacci[n-1]}
+//         if (n>6 && n<=40) {
+//             for (let i=5; i<n; i++) {
+//                 fibonacci[i]=(fibonacci[i-1]+fibonacci[i-2])
+//             }
+//         }
+//         if (n>40) {return  0}
+//         return fibonacci[n-1]
+//     }
+//
+//     console.log(fibo(n))
+// });
+
+function fibo(n) {
+    let fibonacci = [0,1,1,2,3,5,8]
+    if (n<0) {return  0}
+    if (n>0 && n<=6) {return fibonacci[n]}
+    if (n>6 && n<=40) {
+        for (let i=6; i<=n; i++) {
+            fibonacci[i]=(fibonacci[i-1]+fibonacci[i-2])
+        }
+    }
+    if (n>Math.pow(10,7)) {return  0}
+    console.log(fibonacci)
+    return fibonacci[n]
 }
+console.log(fibo(20))
+// считаем только последние цифры фибоначчи
+function fiboLastNum(n) {
+    let fibonacci = [0,1,1,2,3,5,8,3,1]
+    if (n<0) {return  0}
+    if (n>0 && n<=8) {return fibonacci[n]}
+    if (n>8 && n<=Math.pow(10,7)) {
+        for (let i=9; i<=n; i++) {
+            fibonacci[i]=(fibonacci[i-1]+fibonacci[i-2]) %  10
+        }
+    }
+    if (n>Math.pow(10,7)) {return  0}
 
-
-
-
+    return fibonacci[n]
+}
+console.log(fiboLastNum(841645))
