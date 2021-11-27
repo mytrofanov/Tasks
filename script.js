@@ -1986,3 +1986,29 @@ function TheBiggest() {
 //     return num1 * Math.pow(2,num2)
 // }
 // console.log(exponentiation (0.000001,50))
+// ============================ наибольший общий делитель - данные беру из файла stdin==================================
+let stdin = process.openStdin();
+
+stdin.on('data', function(data){
+    let num = data.toString().split(" ");
+    let num1= num[0]
+    let num2 =num[1]
+
+    function theBiggest(num1,num2) {
+        if (num1 <0 || num2<0 || num1> 2*Math.pow(10,9) || num2> 2*Math.pow(10,9)) {return 0}
+        if (num1 === 0) {return num2}
+        if (num2 === 0) {return num1}
+
+        if (num1 >= num2) {
+            let bigNum = num1%num2
+            return   theBiggest(bigNum, num2)}
+        if (num1 <= num2) {
+            let bigNum = num2%num1
+            return  theBiggest(num1, bigNum)}
+    }
+
+    console.log(theBiggest(num1  ,num2))
+
+});
+
+
