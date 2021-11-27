@@ -1951,32 +1951,38 @@ function TheBiggest() {
 //     console.log(fibo(n))
 // });
 
-function fibo(n) {
-    let fibonacci = [0,1,1,2,3,5,8]
-    if (n<0) {return  0}
-    if (n>0 && n<=6) {return fibonacci[n]}
-    if (n>6 && n<=40) {
-        for (let i=6; i<=n; i++) {
-            fibonacci[i]=(fibonacci[i-1]+fibonacci[i-2])
-        }
-    }
-    if (n>Math.pow(10,7)) {return  0}
-    console.log(fibonacci)
-    return fibonacci[n]
-}
-console.log(fibo(20))
-// считаем только последние цифры фибоначчи
-function fiboLastNum(n) {
-    let fibonacci = [0,1,1,2,3,5,8,3,1]
-    if (n<0) {return  0}
-    if (n>0 && n<=8) {return fibonacci[n]}
-    if (n>8 && n<=Math.pow(10,7)) {
-        for (let i=9; i<=n; i++) {
-            fibonacci[i]=(fibonacci[i-1]+fibonacci[i-2]) %  10
-        }
-    }
-    if (n>Math.pow(10,7)) {return  0}
+// function fibo(n) {
+//     let fibonacci = [0,1,1,2,3,5,8]
+//     if (n<0) {return  0}
+//     if (n>0 && n<=6) {return fibonacci[n]}
+//     if (n>6 && n<=40) {
+//         for (let i=6; i<=n; i++) {
+//             fibonacci[i]=(fibonacci[i-1]+fibonacci[i-2])
+//         }
+//     }
+//     if (n>Math.pow(10,7)) {return  0}
+//     console.log(fibonacci)
+//     return fibonacci[n]
+// }
+// console.log(fibo(20))
+// // считаем только последние цифры фибоначчи
+// function fiboLastNum(n) {
+//     let fibonacci = [0,1,1,2,3,5,8,3,1]
+//     if (n<0) {return  0}
+//     if (n>0 && n<=8) {return fibonacci[n]}
+//     if (n>8 && n<=Math.pow(10,7)) {
+//         for (let i=9; i<=n; i++) {
+//             fibonacci[i]=(fibonacci[i-1]+fibonacci[i-2]) %  10
+//         }
+//     }
+//     if (n>Math.pow(10,7)) {return  0}
+//
+//     return fibonacci[n]
+// }
+// console.log(fiboLastNum(841645))
 
-    return fibonacci[n]
-}
-console.log(fiboLastNum(841645))
+// возведение в степень
+// function exponentiation(num1, num2) {
+//     return num1 * Math.pow(2,num2)
+// }
+// console.log(exponentiation (0.000001,50))
