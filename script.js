@@ -1861,8 +1861,6 @@ function TheBiggest() {
 // countChange(11, [5,7]) //  => 0
 
 
-
-
 //========== best:
 //
 // let result = []
@@ -1890,9 +1888,8 @@ function TheBiggest() {
 //     console.log(countChange(4,coins))
 
 
-
-   // /* Dynamic Programming javascript implementation of Coin
-  //  Change problem */
+// /* Dynamic Programming javascript implementation of Coin
+//  Change problem */
 
 //     function countWays(S , m , n)
 //     {
@@ -1987,28 +1984,81 @@ function TheBiggest() {
 // }
 // console.log(exponentiation (0.000001,50))
 // ============================ наибольший общий делитель - данные беру из файла stdin==================================
-let stdin = process.openStdin();
+// let stdin = process.openStdin();
+//
+// stdin.on('data', function(data){
+//     let num = data.toString().split(" ");
+//     let num1= num[0]
+//     let num2 =num[1]
+//
+//     function theBiggest(num1,num2) {
+//         if (num1 <0 || num2<0 || num1> 2*Math.pow(10,9) || num2> 2*Math.pow(10,9)) {return 0}
+//         if (num1 === 0) {return num2}
+//         if (num2 === 0) {return num1}
+//
+//         if (num1 >= num2) {
+//             let bigNum = num1%num2
+//             return   theBiggest(bigNum, num2)}
+//         if (num1 <= num2) {
+//             let bigNum = num2%num1
+//             return  theBiggest(num1, bigNum)}
+//     }
+//
+//     console.log(theBiggest(num1  ,num2))
+//
+// });
 
-stdin.on('data', function(data){
-    let num = data.toString().split(" ");
-    let num1= num[0]
-    let num2 =num[1]
+nails = [[1, 3], [2, 5], [3, 6]]
+nails1 = [[4, 7], [1, 3], [2, 5], [5, 6]]
+nails2= [[5,6],[4,7],[3,8],[2,9],[1,10]]
+nails3= [[1,2],[3,4],[5,6],[7,8],[9,10]]
 
-    function theBiggest(num1,num2) {
-        if (num1 <0 || num2<0 || num1> 2*Math.pow(10,9) || num2> 2*Math.pow(10,9)) {return 0}
-        if (num1 === 0) {return num2}
-        if (num2 === 0) {return num1}
-
-        if (num1 >= num2) {
-            let bigNum = num1%num2
-            return   theBiggest(bigNum, num2)}
-        if (num1 <= num2) {
-            let bigNum = num2%num1
-            return  theBiggest(num1, bigNum)}
+function nailsQuantity(nails) {
+    let nailArray = []
+    let deleteArray = []
+    let result = []
+    // nails.sort()
+    console.log(nails)
+    for (let i=0; i<nails.length; i++) {
+       nailArray.push([nails[i][1],0])
+        deleteArray.push(nails[i][1])
     }
 
-    console.log(theBiggest(num1  ,num2))
+    // nailArray.sort(function (a,b) {return  a - b })
 
-});
+    for (let i=0; i<nails.length; i++) {
+        let min = Math.min.apply(null,deleteArray)
+        console.log(min)
+        for (let j=0; j<nailArray.length; j++) {
+            if (nailArray[j][0]>= nails[i][0] && nailArray[j][0] <=nails[i][1]) {
+                nailArray[j][1] +=1
+                if (nailArray[j][1]=== nails.length ) {result.push(nailArray[j][0])}
+            }
+        }
+    }
+    for (let i=0; i<nails.length; i++) {
+        for (let j=0; j<deleteArray.length; j++) {
+            if (deleteArray[j] >= nails[i][0] && deleteArray[j] <= nails[i][1] ) {
+                 // for (let d=0; d<deleteArray.length; d++) {
+                 //     if (deleteArray[d] >= nails[i][0] && deleteArray[d] <= nails[i][1]) {
+                 //         deleteArray.splice(deleteArray.indexOf(deleteArray[d]),1)
+                 //     }
+                 // }
+            }
+        }
+    }
 
+
+    console.log('nailArray:')
+    console.log(nailArray)
+    console.log('deleteArray:')
+    console.log(deleteArray)
+    console.log('длина массива: ' + deleteArray.length)
+
+    console.log(...result)
+    console.log('количество гвоздей: ' + result.length)
+
+}
+
+nailsQuantity(nails1)
 
