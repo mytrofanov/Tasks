@@ -2007,58 +2007,130 @@ function TheBiggest() {
 //     console.log(theBiggest(num1  ,num2))
 //
 // });
+//==========================================задачи от Stepic с отрезками================================================
+// nails = [[1, 3], [2, 5], [3, 6]]
+// nails1 = [[4, 7], [1, 3], [2, 5], [5, 6]]
+// nails2= [[5,6],[4,7],[3,8],[2,9],[1,10]]
+// nails3= [[1,2],[3,4],[5,6],[7,8],[9,10]]
+//
+// function nailsQuantity(nails) {
+//     let nailArray = []
+//     let deleteArray = []
+//     let result = []
+//     // nails.sort()
+//     console.log(nails)
+//     for (let i=0; i<nails.length; i++) {
+//        nailArray.push([nails[i][1],0])
+//         deleteArray.push(nails[i][1])
+//     }
+//
+//     // nailArray.sort(function (a,b) {return  a - b })
+//
+//     for (let i=0; i<nails.length; i++) {
+//         let min = Math.min.apply(null,deleteArray)
+//         console.log(min)
+//         for (let j=0; j<nailArray.length; j++) {
+//             if (nailArray[j][0]>= nails[i][0] && nailArray[j][0] <=nails[i][1]) {
+//                 nailArray[j][1] +=1
+//                 if (nailArray[j][1]=== nails.length ) {result.push(nailArray[j][0])}
+//             }
+//         }
+//     }
+//     for (let i=0; i<nails.length; i++) {
+//         for (let j=0; j<deleteArray.length; j++) {
+//             if (deleteArray[j] >= nails[i][0] && deleteArray[j] <= nails[i][1] ) {
+//                  // for (let d=0; d<deleteArray.length; d++) {
+//                  //     if (deleteArray[d] >= nails[i][0] && deleteArray[d] <= nails[i][1]) {
+//                  //         deleteArray.splice(deleteArray.indexOf(deleteArray[d]),1)
+//                  //     }
+//                  // }
+//             }
+//         }
+//     }
+//
+//
+//     console.log('nailArray:')
+//     console.log(nailArray)
+//     console.log('deleteArray:')
+//     console.log(deleteArray)
+//     console.log('длина массива: ' + deleteArray.length)
+//
+//     console.log(...result)
+//     console.log('количество гвоздей: ' + result.length)
+//
+// }
+//
+// nailsQuantity(nails1)
 
-nails = [[1, 3], [2, 5], [3, 6]]
-nails1 = [[4, 7], [1, 3], [2, 5], [5, 6]]
-nails2= [[5,6],[4,7],[3,8],[2,9],[1,10]]
-nails3= [[1,2],[3,4],[5,6],[7,8],[9,10]]
+// Первая строка содержит количество предметов
+//   и вместимость рюкзака
+//   Каждая из следующих nn строк задаёт стоимость
+// и объём  предмета  Выведите максимальную стоимость частей предметов
+// (от каждого предмета можно отделить любую часть, стоимость и объём при этом пропорционально уменьшатся),
+// помещающихся в данный рюкзак, с точностью не менее трёх знаков после запятой.
+let goods = new Array()
+let bagCapacity = 50
+let item1PriceAndWeight = [60, 20]
+let item2PriceAndWeight = [100, 50]
+let item3PriceAndWeight = [120, 30]
+goods.push(item1PriceAndWeight, item2PriceAndWeight, item3PriceAndWeight)
+console.log('goods:')
+console.log(goods)
 
-function nailsQuantity(nails) {
-    let nailArray = []
-    let deleteArray = []
-    let result = []
-    // nails.sort()
-    console.log(nails)
-    for (let i=0; i<nails.length; i++) {
-       nailArray.push([nails[i][1],0])
-        deleteArray.push(nails[i][1])
+function bigBag(goods, bagCapacity) {
+    let weightPrice = []
+    let maximumInBag = 0
+    for (let i = 0; i < goods.length; i++) {
+        weightPrice[i] = goods[i][0] / goods[i][1]
+    }
+    console.log('weightPrice:')
+    console.log(weightPrice)
+
+    // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex)
+
+    function bagPackage() {
+        let dearest = Math.max.apply(null, weightPrice)
+        let dearestIndex = weightPrice.indexOf(dearest)
+        let dearestWeight = goods[dearestIndex][1]
+        if (dearestWeight !== undefined && dearestWeight <= bagCapacity) {
+            bagCapacity -= goods[dearestIndex][1]
+            maximumInBag += goods[dearestIndex][0]
+            goods.splice(dearestIndex, 1)
+            weightPrice.splice(dearestIndex, 1)
+            console.log('weightPrice:')
+            console.log(weightPrice)
+            console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' первое условие')
+            console.log('bagCapacity= ' + bagCapacity + ' первое условие')
+            console.log('maximumInBag= ' + maximumInBag + ' первое условие')
+        }
+        if (dearestWeight !== undefined && dearestWeight > bagCapacity) {
+            maximumInBag += dearest * bagCapacity
+            dearestWeight = dearestWeight - bagCapacity
+            goods[dearestIndex][0] = (dearestWeight * dearest)
+            bagCapacity = 0
+            console.log('weightPrice:')
+            console.log(weightPrice)
+            console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' второе условие')
+            console.log('bagCapacity= ' + bagCapacity)
+            console.log('maximumInBag= ' + maximumInBag)
+
+        }
+
+
     }
 
-    // nailArray.sort(function (a,b) {return  a - b })
-
-    for (let i=0; i<nails.length; i++) {
-        let min = Math.min.apply(null,deleteArray)
-        console.log(min)
-        for (let j=0; j<nailArray.length; j++) {
-            if (nailArray[j][0]>= nails[i][0] && nailArray[j][0] <=nails[i][1]) {
-                nailArray[j][1] +=1
-                if (nailArray[j][1]=== nails.length ) {result.push(nailArray[j][0])}
-            }
+    while (bagCapacity !== 0) {
+        let count = 100
+        bagPackage()
+        if (count >= 100) {
+            return 0
         }
     }
-    for (let i=0; i<nails.length; i++) {
-        for (let j=0; j<deleteArray.length; j++) {
-            if (deleteArray[j] >= nails[i][0] && deleteArray[j] <= nails[i][1] ) {
-                 // for (let d=0; d<deleteArray.length; d++) {
-                 //     if (deleteArray[d] >= nails[i][0] && deleteArray[d] <= nails[i][1]) {
-                 //         deleteArray.splice(deleteArray.indexOf(deleteArray[d]),1)
-                 //     }
-                 // }
-            }
-        }
-    }
 
 
-    console.log('nailArray:')
-    console.log(nailArray)
-    console.log('deleteArray:')
-    console.log(deleteArray)
-    console.log('длина массива: ' + deleteArray.length)
-
-    console.log(...result)
-    console.log('количество гвоздей: ' + result.length)
-
+    console.log(goods)
+    console.log(weightPrice)
+    console.log('bagCapacity: ' + bagCapacity)
 }
 
-nailsQuantity(nails1)
-
+bigBag(goods, bagCapacity)
