@@ -2068,6 +2068,13 @@ function TheBiggest() {
 // и объём  предмета  Выведите максимальную стоимость частей предметов
 // (от каждого предмета можно отделить любую часть, стоимость и объём при этом пропорционально уменьшатся),
 // помещающихся в данный рюкзак, с точностью не менее трёх знаков после запятой.
+//5 0
+// 3316 1601
+// 5375 8940
+// 2852 6912
+// 3336 9926
+// 1717 8427
+
 let goods = new Array()
 let bagCapacity = 50
 let item1PriceAndWeight = [60, 20]
@@ -2077,7 +2084,9 @@ goods.push(item1PriceAndWeight, item2PriceAndWeight, item3PriceAndWeight)
 console.log('goods:')
 console.log(goods)
 
+
 function bigBag(goods, bagCapacity) {
+    if (bagCapacity === 0 ) {return 0}
     let weightPrice = []
     let maximumInBag = 0
     for (let i = 0; i < goods.length; i++) {
@@ -2092,45 +2101,107 @@ function bigBag(goods, bagCapacity) {
         let dearest = Math.max.apply(null, weightPrice)
         let dearestIndex = weightPrice.indexOf(dearest)
         let dearestWeight = goods[dearestIndex][1]
-        if (dearestWeight !== undefined && dearestWeight <= bagCapacity) {
-            bagCapacity -= goods[dearestIndex][1]
-            maximumInBag += goods[dearestIndex][0]
-            goods.splice(dearestIndex, 1)
-            weightPrice.splice(dearestIndex, 1)
-            console.log('weightPrice:')
-            console.log(weightPrice)
-            console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' первое условие')
-            console.log('bagCapacity= ' + bagCapacity + ' первое условие')
-            console.log('maximumInBag= ' + maximumInBag + ' первое условие')
-        }
         if (dearestWeight !== undefined && dearestWeight > bagCapacity) {
             maximumInBag += dearest * bagCapacity
             dearestWeight = dearestWeight - bagCapacity
             goods[dearestIndex][0] = (dearestWeight * dearest)
             bagCapacity = 0
-            console.log('weightPrice:')
-            console.log(weightPrice)
-            console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' второе условие')
-            console.log('bagCapacity= ' + bagCapacity)
-            console.log('maximumInBag= ' + maximumInBag)
-
+            // console.log('weightPrice:')
+            // console.log(weightPrice)
+            // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' dearestWeight > bagCapacity')
+            // console.log('bagCapacity= ' + bagCapacity)
+            // console.log('maximumInBag= ' + maximumInBag)
         }
-
-
+        if (dearestWeight !== undefined && dearestWeight <= bagCapacity) {
+            bagCapacity -= goods[dearestIndex][1]
+            maximumInBag += goods[dearestIndex][0]
+            goods.splice(dearestIndex, 1)
+            weightPrice.splice(dearestIndex, 1)
+            // console.log('weightPrice:')
+            // console.log(weightPrice)
+            // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' dearestWeight <= bagCapacity')
+            // console.log('bagCapacity= ' + bagCapacity + ' первое условие')
+            // console.log('maximumInBag= ' + maximumInBag + ' первое условие')
+        }
     }
 
-    while (bagCapacity !== 0) {
-        let count = 100
+    while (bagCapacity > 0) {
         bagPackage()
-        if (count >= 100) {
-            return 0
-        }
     }
-
-
-    console.log(goods)
-    console.log(weightPrice)
+    // console.log(goods)
+    // console.log(weightPrice)
     console.log('bagCapacity: ' + bagCapacity)
+    console.log('maximumInBag= ' + maximumInBag.toFixed(3))
 }
 
 bigBag(goods, bagCapacity)
+
+// let stdin = process.openStdin();
+// stdin.on('data', function(data){
+//     let incomeData = data.toString().split(" ");
+//     let goodsLength = incomeData.length
+//
+//
+//
+//     // 3 СТРОЧКИ ВЫШЕ НУЖНО ДЛЯ ПЕРЕДАЧИ ВВОДА В ПЕРЕМЕННУЮ -> n
+//     let goods = new Array()
+//     let bagCapacity = incomeData[1]
+//     let item1PriceAndWeight = [60, 20]
+//     let item2PriceAndWeight = [100, 50]
+//     let item3PriceAndWeight = [120, 30]
+//     goods.push(item1PriceAndWeight, item2PriceAndWeight, item3PriceAndWeight)
+//     console.log('goods:')
+//     console.log(goods)
+//
+//     function bigBag(goods, bagCapacity) {
+//         let weightPrice = []
+//         let maximumInBag = 0
+//         for (let i = 0; i < goods.length; i++) {
+//             weightPrice[i] = goods[i][0] / goods[i][1]
+//         }
+//         console.log('weightPrice:')
+//         console.log(weightPrice)
+//
+//         // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex)
+//
+//         function bagPackage() {
+//             let dearest = Math.max.apply(null, weightPrice)
+//             let dearestIndex = weightPrice.indexOf(dearest)
+//             let dearestWeight = goods[dearestIndex][1]
+//             if (dearestWeight !== undefined && dearestWeight > bagCapacity) {
+//                 maximumInBag += dearest * bagCapacity
+//                 dearestWeight = dearestWeight - bagCapacity
+//                 goods[dearestIndex][0] = (dearestWeight * dearest)
+//                 bagCapacity = 0
+//                 // console.log('weightPrice:')
+//                 // console.log(weightPrice)
+//                 // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' dearestWeight > bagCapacity')
+//                 // console.log('bagCapacity= ' + bagCapacity)
+//                 // console.log('maximumInBag= ' + maximumInBag)
+//             }
+//             if (dearestWeight !== undefined && dearestWeight <= bagCapacity) {
+//                 bagCapacity -= goods[dearestIndex][1]
+//                 maximumInBag += goods[dearestIndex][0]
+//                 goods.splice(dearestIndex, 1)
+//                 weightPrice.splice(dearestIndex, 1)
+//                 // console.log('weightPrice:')
+//                 // console.log(weightPrice)
+//                 // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' dearestWeight <= bagCapacity')
+//                 // console.log('bagCapacity= ' + bagCapacity + ' первое условие')
+//                 // console.log('maximumInBag= ' + maximumInBag + ' первое условие')
+//             }
+//         }
+//
+//         while (bagCapacity > 0) {
+//             bagPackage()
+//         }
+//         // console.log(goods)
+//         // console.log(weightPrice)
+//         console.log('bagCapacity: ' + bagCapacity)
+//         console.log('maximumInBag= ' + maximumInBag.toFixed(3))
+//     }
+//
+//     bigBag(goods, bagCapacity)
+//
+//
+// });
