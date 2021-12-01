@@ -2074,67 +2074,67 @@ function TheBiggest() {
 // 2852 6912
 // 3336 9926
 // 1717 8427
-
-let goods = new Array()
-let bagCapacity = 50
-let item1PriceAndWeight = [60, 20]
-let item2PriceAndWeight = [100, 50]
-let item3PriceAndWeight = [120, 30]
-goods.push(item1PriceAndWeight, item2PriceAndWeight, item3PriceAndWeight)
-console.log('goods:')
-console.log(goods)
-
-
-function bigBag(goods, bagCapacity) {
-    if (bagCapacity === 0 ) {return 0}
-    let weightPrice = []
-    let maximumInBag = 0
-    for (let i = 0; i < goods.length; i++) {
-        weightPrice[i] = goods[i][0] / goods[i][1]
-    }
-    console.log('weightPrice:')
-    console.log(weightPrice)
-
-    // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex)
-
-    function bagPackage() {
-        let dearest = Math.max.apply(null, weightPrice)
-        let dearestIndex = weightPrice.indexOf(dearest)
-        let dearestWeight = goods[dearestIndex][1]
-        if (dearestWeight !== undefined && dearestWeight > bagCapacity) {
-            maximumInBag += dearest * bagCapacity
-            dearestWeight = dearestWeight - bagCapacity
-            goods[dearestIndex][0] = (dearestWeight * dearest)
-            bagCapacity = 0
-            // console.log('weightPrice:')
-            // console.log(weightPrice)
-            // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' dearestWeight > bagCapacity')
-            // console.log('bagCapacity= ' + bagCapacity)
-            // console.log('maximumInBag= ' + maximumInBag)
-        }
-        if (dearestWeight !== undefined && dearestWeight <= bagCapacity) {
-            bagCapacity -= goods[dearestIndex][1]
-            maximumInBag += goods[dearestIndex][0]
-            goods.splice(dearestIndex, 1)
-            weightPrice.splice(dearestIndex, 1)
-            // console.log('weightPrice:')
-            // console.log(weightPrice)
-            // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' dearestWeight <= bagCapacity')
-            // console.log('bagCapacity= ' + bagCapacity + ' первое условие')
-            // console.log('maximumInBag= ' + maximumInBag + ' первое условие')
-        }
-    }
-
-    while (bagCapacity > 0) {
-        bagPackage()
-    }
-    // console.log(goods)
-    // console.log(weightPrice)
-    console.log('bagCapacity: ' + bagCapacity)
-    console.log('maximumInBag= ' + maximumInBag.toFixed(3))
-}
-
-bigBag(goods, bagCapacity)
+//
+// let goods = new Array()
+// let bagCapacity = 50
+// let item1PriceAndWeight = [60, 20]
+// let item2PriceAndWeight = [100, 50]
+// let item3PriceAndWeight = [120, 30]
+// goods.push(item1PriceAndWeight, item2PriceAndWeight, item3PriceAndWeight)
+// console.log('goods:')
+// console.log(goods)
+//
+//
+// function bigBag(goods, bagCapacity) {
+//     if (bagCapacity === 0 ) {return 0}
+//     let weightPrice = []
+//     let maximumInBag = 0
+//     for (let i = 0; i < goods.length; i++) {
+//         weightPrice[i] = goods[i][0] / goods[i][1]
+//     }
+//     console.log('weightPrice:')
+//     console.log(weightPrice)
+//
+//     // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex)
+//
+//     function bagPackage() {
+//         let dearest = Math.max.apply(null, weightPrice)
+//         let dearestIndex = weightPrice.indexOf(dearest)
+//         let dearestWeight = goods[dearestIndex][1]
+//         if (dearestWeight !== undefined && dearestWeight > bagCapacity) {
+//             maximumInBag += dearest * bagCapacity
+//             dearestWeight = dearestWeight - bagCapacity
+//             goods[dearestIndex][0] = (dearestWeight * dearest)
+//             bagCapacity = 0
+//             // console.log('weightPrice:')
+//             // console.log(weightPrice)
+//             // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' dearestWeight > bagCapacity')
+//             // console.log('bagCapacity= ' + bagCapacity)
+//             // console.log('maximumInBag= ' + maximumInBag)
+//         }
+//         if (dearestWeight !== undefined && dearestWeight <= bagCapacity) {
+//             bagCapacity -= goods[dearestIndex][1]
+//             maximumInBag += goods[dearestIndex][0]
+//             goods.splice(dearestIndex, 1)
+//             weightPrice.splice(dearestIndex, 1)
+//             // console.log('weightPrice:')
+//             // console.log(weightPrice)
+//             // console.log('dearest: ' + dearest, 'dearestIndex: ' + dearestIndex + ' dearestWeight <= bagCapacity')
+//             // console.log('bagCapacity= ' + bagCapacity + ' первое условие')
+//             // console.log('maximumInBag= ' + maximumInBag + ' первое условие')
+//         }
+//     }
+//
+//     while (bagCapacity > 0) {
+//         bagPackage()
+//     }
+//     // console.log(goods)
+//     // console.log(weightPrice)
+//     console.log('bagCapacity: ' + bagCapacity)
+//     console.log('maximumInBag= ' + maximumInBag.toFixed(3))
+// }
+//
+// bigBag(goods, bagCapacity)
 
 // let stdin = process.openStdin();
 // stdin.on('data', function(data){
@@ -2205,3 +2205,43 @@ bigBag(goods, bagCapacity)
 //
 //
 // });
+let coins = [1, 5, 10, 25]
+
+function minimumCoins(money, coins) {
+    let change = 0
+    let sum = 0
+    let numberOfCoins = {}
+    console.log(coins)
+
+    function coinCount(currentMoney) {
+        let theBiggestCoin = Math.max.apply(null, coins)
+        let biggestCoinIndex = coins.indexOf(theBiggestCoin)
+        let coinsNumber = Math.floor(currentMoney / theBiggestCoin)
+        if (currentMoney < theBiggestCoin) {
+            coins.splice(biggestCoinIndex,1)
+        }
+        if (currentMoney >= theBiggestCoin) {
+            numberOfCoins[theBiggestCoin] = coinsNumber
+            sum += theBiggestCoin * coinsNumber
+            change = money - sum
+            // money = currentMoney - sum
+            coins.splice(biggestCoinIndex, 1)
+        }
+               if (change > 0) {
+            coinCount(change)
+        }
+
+    }
+
+
+
+    if (money > 0) {
+        coinCount(money)
+    }
+
+    console.log(numberOfCoins)
+    console.log('sum = ' + sum)
+    console.log('change = ' + change)
+}
+
+minimumCoins(91, coins)
