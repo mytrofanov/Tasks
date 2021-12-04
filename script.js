@@ -2205,43 +2205,85 @@ function TheBiggest() {
 //
 //
 // });
-let coins = [1, 5, 10, 25]
+//
+// Scanner input = new Scanner (new File())
+//
+//
+// let coins = [1, 5, 10, 25]
+//
+// function minimumCoins(money, coins) {
+//     let change = 0
+//     let sum = 0
+//     let numberOfCoins = {}
+//     console.log(coins)
+//
+//     function coinCount(currentMoney) {
+//         let theBiggestCoin = Math.max.apply(null, coins)
+//         let biggestCoinIndex = coins.indexOf(theBiggestCoin)
+//         let coinsNumber = Math.floor(currentMoney / theBiggestCoin)
+//         if (currentMoney < theBiggestCoin) {
+//             coins.splice(biggestCoinIndex,1)
+//         }
+//         if (currentMoney >= theBiggestCoin) {
+//             numberOfCoins[theBiggestCoin] = coinsNumber
+//             sum += theBiggestCoin * coinsNumber
+//             change = money - sum
+//             // money = currentMoney - sum
+//             coins.splice(biggestCoinIndex, 1)
+//         }
+//                if (change > 0) {
+//             coinCount(change)
+//         }
+//
+//     }
+//
+//
+//
+//     if (money > 0) {
+//         coinCount(money)
+//     }
+//
+//     console.log(numberOfCoins)
+//     console.log('sum = ' + sum)
+//     console.log('change = ' + change)
+// }
+//
+// minimumCoins(91, coins)
 
-function minimumCoins(money, coins) {
-    let change = 0
-    let sum = 0
-    let numberOfCoins = {}
-    console.log(coins)
+// перебираем комбинации из знаков строки
+// In this kata you have to create all permutations of an input string and remove duplicates, if present.
+// This means, you have to shuffle all letters from the input in all possible orders.
 
-    function coinCount(currentMoney) {
-        let theBiggestCoin = Math.max.apply(null, coins)
-        let biggestCoinIndex = coins.indexOf(theBiggestCoin)
-        let coinsNumber = Math.floor(currentMoney / theBiggestCoin)
-        if (currentMoney < theBiggestCoin) {
-            coins.splice(biggestCoinIndex,1)
-        }
-        if (currentMoney >= theBiggestCoin) {
-            numberOfCoins[theBiggestCoin] = coinsNumber
-            sum += theBiggestCoin * coinsNumber
-            change = money - sum
-            // money = currentMoney - sum
-            coins.splice(biggestCoinIndex, 1)
-        }
-               if (change > 0) {
-            coinCount(change)
-        }
-
-    }
-
-
-
-    if (money > 0) {
-        coinCount(money)
-    }
-
-    console.log(numberOfCoins)
-    console.log('sum = ' + sum)
-    console.log('change = ' + change)
+function permutations(string) {
+    return (string.length <= 1) ? [string] :
+        Array.from(new Set(
+            string.split('')
+                .map((char, i) => permutations(string.substr(0, i) + string.substr(i + 1)).map(p => char + p))
+                .reduce((r, x) => r.concat(x), [])
+        ));
 }
-
-minimumCoins(91, coins)
+console.log(permutations('abc'))
+//
+// let stringMax = 'maximus'
+// let m = stringMax.substr(0, 1)
+// let m1 = stringMax.substr(0, 2)
+// let m2 = stringMax.substr(0, 3)
+// console.log (m)
+// console.log (m1)
+// console.log (m2)
+// let l = stringMax.substr(1)
+// let l1 = stringMax.substr(2)
+// let l2 = stringMax.substr(3)
+// let l3 = stringMax.substr(4)
+//
+// console.log(l)
+// console.log(l1)
+// console.log(l2)
+// console.log(l3)
+// let newMax = m + l
+// let newMaxArray = newMax.split('')
+// let combi = newMaxArray.map(p=>m + p)
+// console.log(combi)
+// let reducedCombi = combi.reduce((r,x)=> r.concat(x),[])
+// console.log('reducedCombi:')
+// console.log(reducedCombi)
