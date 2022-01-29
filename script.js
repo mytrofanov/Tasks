@@ -2504,9 +2504,11 @@ function formatDuration(seconds) {
     let minute = 60
     let hour = minute * 60
     let day = hour * 24
+    let year = day * 365
     let minutesFromInput = seconds / minute
     let hoursFromInput = seconds / hour
     let daysFromInput = seconds / day
+    let yearFromInput = seconds / year
     let output = ''
     if (seconds === 0) {
         return output = 'now'
@@ -2515,21 +2517,52 @@ function formatDuration(seconds) {
         return false
     }
 
-    let dayInteger = Math.floor(daysFromInput) || ''
+    let yearInteger = Math.floor(yearFromInput) || ''
+    let dayInteger = Math.floor(daysFromInput) - (Math.floor(yearFromInput)*365)|| ''
     let hourInteger = Math.floor(hoursFromInput) - (Math.floor(daysFromInput)*24) || ''
     let minuteInteger = Math.floor(minutesFromInput) - (Math.floor(hoursFromInput) * minute) || ''
     let secondInteger = secondsFromInput - (Math.floor(minutesFromInput) * minute) || ''
+    let yearName = ''
+    if (yearInteger === 1 && dayInteger <1) {
+        yearName = ' year'
+    }
+    if (yearInteger === 1 && dayInteger <1 && hourInteger >1 ) {
+        yearName = ' year,'
+    }
+    if (yearInteger === 1 && dayInteger > 0 && hourInteger >0) {
+        yearName = ' year, '
+    }
+    if (yearInteger === 1 && dayInteger > 0 && hourInteger >0 & minuteInteger > 0) {
+        yearName = ' year, '
+    }
+    if (yearInteger > 1 && dayInteger < 1) {
+        yearName = ' years '
+    }
+    if (yearInteger > 1 && hourInteger > 0) {
+        yearName = ' years, '
+    }
+    if (yearInteger > 1 && dayInteger > 0 && hourInteger < 1) {
+        yearName = ' years and '
+    }
+
     let dayName = ''
     if (dayInteger > 0 && dayInteger === 1) {
         dayName = ' day'
     }
     if (dayInteger > 0 && dayInteger === 1 && hourInteger > 0) {
+        dayName = ' day, '
+    }
+    if (dayInteger > 0 && dayInteger > 1 && minuteInteger > 0) {
         dayName = ' days, '
     }
-    if (dayInteger > 0 && dayInteger > 1) {
-        dayName = ' days, '
+    if (dayInteger > 0 && dayInteger > 1 && minuteInteger <1) {
+        dayName = ' days'
+    }
+    if (dayInteger > 0 && dayInteger > 1 && hourInteger > 0 & minuteInteger <1) {
+        dayName = ' days and '
     }
 
+    //========== hours =========
     let hourName = ''
     if (hourInteger > 0 && hourInteger === 1) {
         hourName = ' hour'
@@ -2538,8 +2571,15 @@ function formatDuration(seconds) {
         hourName = ' hour, '
     }
     if (hourInteger > 0 && hourInteger > 1) {
-        hourName = ' hours '
+        hourName = ' hours, '
     }
+    if (hourInteger > 0 && hourInteger > 1 && minuteInteger <1) {
+        hourName = ' hours'
+    }
+    if (hourInteger > 0 && hourInteger > 1 && minuteInteger > 0 && secondInteger <1) {
+        hourName = ' hours and '
+    }
+    //========= seconds =========
     let secondName = ''
     if (secondInteger > 0 && secondInteger === 1) {
         secondName = ' second'
@@ -2547,6 +2587,8 @@ function formatDuration(seconds) {
     if (secondInteger > 0 && secondInteger > 1) {
         secondName = ' seconds'
     }
+
+    //========== minutes ==========
     let minuteName = ''
     if (minuteInteger > 0 && minuteInteger === 1 && secondInteger > 0) {
         minuteName = ' minute and '
@@ -2560,9 +2602,10 @@ function formatDuration(seconds) {
     if (minuteInteger > 0 && minuteInteger > 1 && secondInteger < 1) {
         minuteName = ' minutes'
     }
-    output = dayInteger + dayName + hourInteger + hourName + minuteInteger + minuteName + secondInteger + secondName
+    output = yearInteger + yearName + dayInteger + dayName + hourInteger + hourName
+        + minuteInteger + minuteName + secondInteger + secondName
     return output
 
 }
 
-console.log(formatDuration(86500))
+console.log(formatDuration(31561560))
