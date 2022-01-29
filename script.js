@@ -2253,16 +2253,16 @@ function TheBiggest() {
 // перебираем комбинации из знаков строки
 // In this kata you have to create all permutations of an input string and remove duplicates, if present.
 // This means, you have to shuffle all letters from the input in all possible orders.
-
-function permutations(string) {
-    return (string.length <= 1) ? [string] :
-        Array.from(new Set(
-            string.split('')
-                .map((char, i) => permutations(string.substr(0, i) + string.substr(i + 1)).map(p => char + p))
-                .reduce((r, x) => r.concat(x), [])
-        ));
-}
-console.log(permutations('abc'))
+//
+// function permutations(string) {
+//     return (string.length <= 1) ? [string] :
+//         Array.from(new Set(
+//             string.split('')
+//                 .map((char, i) => permutations(string.substr(0, i) + string.substr(i + 1)).map(p => char + p))
+//                 .reduce((r, x) => r.concat(x), [])
+//         ));
+// }
+// console.log(permutations('abc'))
 //
 // let stringMax = 'maximus'
 // let m = stringMax.substr(0, 1)
@@ -2287,3 +2287,282 @@ console.log(permutations('abc'))
 // let reducedCombi = combi.reduce((r,x)=> r.concat(x),[])
 // console.log('reducedCombi:')
 // console.log(reducedCombi)
+// ============================= In this kata we want to convert a string into an integer.
+// The strings simply represent the numbers in words.
+
+//
+// function parseInt(string) {
+//     const numbers = {
+//         'zero': 0,
+//         'one': 1,
+//         'two': 2,
+//         'three': 3,
+//         'four': 4,
+//         'five': 5,
+//         'six': 6,
+//         'seven': 7,
+//         'eight': 8,
+//         'nine': 9,
+//         'ten': 10,
+//         'eleven': 11,
+//         'twelve': 12,
+//         'thirteen': 13,
+//         'fourteen': 14,
+//         'fifteen': 15,
+//         'sixteen': 16,
+//         'seventeen': 17,
+//         'eighteen': 18,
+//         'nineteen': 19,
+//         'twenty': 20,
+//         'thirty': 30,
+//         'forty': 40,
+//         'fifty': 50,
+//         'sixty': 60,
+//         'seventy': 70,
+//         'eighty': 80,
+//         'ninety': 90,
+//         'hundred': 100,
+//         'thousand': 1000,
+//         'million': 1000000
+//     }
+//     let result = ''
+//
+//     function simpleNumbers() {
+//
+//     }
+//     let splitedString = string.split('-')
+//     for (let i=0; i<splitedString.length; i++){
+//        for (const [key, value] of Object.entries(numbers)){
+//            if (key === splitedString[i]   ) {
+//                result += (value)
+//            }
+//        }
+//
+//         }
+//
+//     console.log('splitedString = ' + splitedString)
+//     console.log('result= ' + result)
+// }
+//
+// parseInt('two hundred')
+
+// let basket = [
+//     {
+//         "id": 4,
+//         "name": "Galaxy M12",
+//         "price": 4400,
+//         "rating": null,
+//         "img": "eaaf5fc1-45c1-4855-809b-fc1ce9a22410.jpeg",
+//         "createdAt": "2021-12-14T11:35:02.835Z",
+//         "updatedAt": "2021-12-14T11:35:02.835Z",
+//         "typeId": 2,
+//         "brandId": 1,
+//         "info": [],
+//         "quality": 1
+//     },
+//     {
+//         "id": 8,
+//         "name": "KD50X85TJR",
+//         "price": 29900,
+//         "rating": null,
+//         "img": "171648db-a7be-4f81-9235-bf424252aae9.jpeg",
+//         "createdAt": "2021-12-18T08:29:52.733Z",
+//         "updatedAt": "2021-12-18T08:29:52.733Z",
+//         "typeId": 4,
+//         "brandId": 5,
+//         "info": [],
+//         "quality": 1
+//     },
+//     {
+//         "id": 4,
+//         "name": "Galaxy M12",
+//         "price": 4400,
+//         "rating": null,
+//         "img": "eaaf5fc1-45c1-4855-809b-fc1ce9a22410.jpeg",
+//         "createdAt": "2021-12-14T11:35:02.835Z",
+//         "updatedAt": "2021-12-14T11:35:02.835Z",
+//         "typeId": 2,
+//         "brandId": 1,
+//         "info": [],
+//         "quality": 1
+//     },
+//     {
+//         "id": 12,
+//         "name": "Kaiser KS 88200",
+//         "price": 24500,
+//         "rating": null,
+//         "img": "6dc419a3-f1e0-43ef-9d3a-f7673b7fe37a.jpeg",
+//         "createdAt": "2022-01-09T12:34:56.786Z",
+//         "updatedAt": "2022-01-09T12:34:56.786Z",
+//         "typeId": 15,
+//         "brandId": 1,
+//         "info": [
+//             {
+//                 "id": 5,
+//                 "title": "Объем",
+//                 "description": "500л",
+//                 "createdAt": "2022-01-09T12:34:56.939Z",
+//                 "updatedAt": "2022-01-09T12:34:56.939Z",
+//                 "deviceId": 12
+//             },
+//             {
+//                 "id": 6,
+//                 "title": "Потребление",
+//                 "description": "2кВт",
+//                 "createdAt": "2022-01-09T12:34:56.940Z",
+//                 "updatedAt": "2022-01-09T12:34:56.940Z",
+//                 "deviceId": 12
+//             },
+//             {
+//                 "id": 7,
+//                 "title": "Шум",
+//                 "description": "20дб",
+//                 "createdAt": "2022-01-09T12:34:56.940Z",
+//                 "updatedAt": "2022-01-09T12:34:56.940Z",
+//                 "deviceId": 12
+//             }
+//         ],
+//         "quality": 1
+//     },
+//     {
+//         "id": 4,
+//         "name": "Galaxy M12",
+//         "price": 4400,
+//         "rating": null,
+//         "img": "eaaf5fc1-45c1-4855-809b-fc1ce9a22410.jpeg",
+//         "createdAt": "2021-12-14T11:35:02.835Z",
+//         "updatedAt": "2021-12-14T11:35:02.835Z",
+//         "typeId": 2,
+//         "brandId": 1,
+//         "info": [],
+//         "quality": 1
+//     },
+//     {
+//         "id": 4,
+//         "name": "Galaxy M12",
+//         "price": 4400,
+//         "rating": null,
+//         "img": "eaaf5fc1-45c1-4855-809b-fc1ce9a22410.jpeg",
+//         "createdAt": "2021-12-14T11:35:02.835Z",
+//         "updatedAt": "2021-12-14T11:35:02.835Z",
+//         "typeId": 2,
+//         "brandId": 1,
+//         "info": [],
+//         "quality": 1
+//     },
+//     {
+//         "id": 4,
+//         "name": "Galaxy M12",
+//         "price": 4400,
+//         "rating": null,
+//         "img": "eaaf5fc1-45c1-4855-809b-fc1ce9a22410.jpeg",
+//         "createdAt": "2021-12-14T11:35:02.835Z",
+//         "updatedAt": "2021-12-14T11:35:02.835Z",
+//         "typeId": 2,
+//         "brandId": 1,
+//         "info": [],
+//         "quality": 1
+//     }
+// ]
+//
+// function priceList(array) {
+//     let b = []
+//     let c = array
+//     let idSet = new Set()
+//
+//     c.forEach(i=>{
+//         if(!idSet.has(i.id)){
+//             b.push(i)
+//         }
+//         if(idSet.has(i.id)){
+//            b.forEach(j=>{
+//                if(j.id === i.id) {j.quality +=1}
+//            })
+//         }
+//         idSet.add(i.id)
+//     })
+//     b.forEach(q=>{
+//         q.summ = q.quality * q.price
+//     })
+//     console.log(b)
+// }
+// console.log(basket)
+// priceList(basket)
+//====================================================================================
+// The function must accept a non-negative integer.
+// If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years,
+// days, hours, minutes and seconds.
+//
+//     It is much easier to understand with an example:
+//
+//     formatDuration(62)    // returns "1 minute and 2 seconds"
+// formatDuration(3662)  // returns "1 hour, 1 minute and 2 seco
+// For the purpose of this Kata, a year is 365 days and a day is 24 hours.
+
+function formatDuration(seconds) {
+    let secondsFromInput = seconds
+    let minute = 60
+    let hour = minute * 60
+    let day = hour * 24
+    let minutesFromInput = seconds / minute
+    let hoursFromInput = seconds / hour
+    let daysFromInput = seconds / day
+    let output = ''
+    if (seconds === 0) {
+        return output = 'now'
+    }
+    if (seconds < 0 || undefined) {
+        return false
+    }
+
+    let dayInteger = Math.floor(daysFromInput) || ''
+    let hourInteger = Math.floor(hoursFromInput) - (Math.floor(daysFromInput)*24) || ''
+    let minuteInteger = Math.floor(minutesFromInput) - (Math.floor(hoursFromInput) * minute) || ''
+    let secondInteger = secondsFromInput - (Math.floor(minutesFromInput) * minute) || ''
+    let dayName = ''
+    if (dayInteger > 0 && dayInteger === 1) {
+        dayName = ' day'
+    }
+    if (dayInteger > 0 && dayInteger === 1 && hourInteger > 0) {
+        dayName = ' days, '
+    }
+    if (dayInteger > 0 && dayInteger > 1) {
+        dayName = ' days, '
+    }
+
+    let hourName = ''
+    if (hourInteger > 0 && hourInteger === 1) {
+        hourName = ' hour'
+    }
+    if (hourInteger > 0 && hourInteger === 1 && minuteInteger > 0) {
+        hourName = ' hour, '
+    }
+    if (hourInteger > 0 && hourInteger > 1) {
+        hourName = ' hours '
+    }
+    let secondName = ''
+    if (secondInteger > 0 && secondInteger === 1) {
+        secondName = ' second'
+    }
+    if (secondInteger > 0 && secondInteger > 1) {
+        secondName = ' seconds'
+    }
+    let minuteName = ''
+    if (minuteInteger > 0 && minuteInteger === 1 && secondInteger > 0) {
+        minuteName = ' minute and '
+    }
+    if (minuteInteger > 0 && minuteInteger === 1 && secondInteger < 1) {
+        minuteName = ' minute '
+    }
+    if (minuteInteger > 0 && minuteInteger > 1 && secondInteger > 0) {
+        minuteName = ' minutes and '
+    }
+    if (minuteInteger > 0 && minuteInteger > 1 && secondInteger < 1) {
+        minuteName = ' minutes'
+    }
+    output = dayInteger + dayName + hourInteger + hourName + minuteInteger + minuteName + secondInteger + secondName
+    return output
+
+}
+
+console.log(formatDuration(86500))
