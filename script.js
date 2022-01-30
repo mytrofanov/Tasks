@@ -2611,22 +2611,182 @@ function TheBiggest() {
 // console.log(formatDuration(31561560))
 
 //====================лучшее решение =================================================================
-function formatDuration (seconds) {
-    let time = { year: 31536000, day: 86400, hour: 3600, minute: 60, second: 1 },
-        res = [];
+// function formatDuration (seconds) {
+//     let time = { year: 31536000, day: 86400, hour: 3600, minute: 60, second: 1 },
+//         res = [];
+//
+//     if (seconds === 0) return 'now';
+//
+//     for (let key in time) {
+//         if (seconds >= time[key]) {
+//             let val = Math.floor(seconds/time[key]);
+//             console.log('val: ' + val)
+//             res.push(val += val > 1 ? ' ' + key + 's' : ' ' + key);
+//             seconds = seconds % time[key];
+//             console.log('seconds: ' + seconds)
+//         }
+//     }
+//     console.log('res:')
+//     console.log(res)
+//     return res.length > 1 ? res.join(', ').replace(/,([^,]*)$/,' and'+'$1') : res[0]
+// }
+//
+// console.log (formatDuration(361201))
 
-    if (seconds === 0) return 'now';
+// ============================================="Interesting" Numbers =====================================
+// Interesting numbers are 3-or-more digit numbers that meet one or more of the following criteria:
+//
+//     Any digit followed by all zeros: 100, 90000
+// Every digit is the same number: 1111
+// The digits are sequential, incementing†: 1234
+// The digits are sequential, decrementing‡: 4321
+// The digits are a palindrome: 1221 or 73837
+// The digits match one of the values in the awesomePhrases array
+// † For incrementing sequences, 0 should come after 9, and not before 1, as in 7890.
+// ‡ For decrementing sequences, 0 should come after 1, and not before 9, as in 3210.
+//
+// So, you should expect these inputs and outputs:
+//
+// // "boring" numbers
+//     isInteresting(3, [1337, 256]);    // 0
+// isInteresting(3236, [1337, 256]); // 0
+//
+// // progress as we near an "interesting" number
+// isInteresting(11207, []); // 0
+// isInteresting(11208, []); // 0
+// isInteresting(11209, []); // 1
+// isInteresting(11210, []); // 1
+// isInteresting(11211, []); // 2
+//
+// // nearing a provided "awesome phrase"
+// isInteresting(1335, [1337, 256]); // 1
+// isInteresting(1336, [1337, 256]); // 1
+// isInteresting(1337, [1337, 256]); // 2
 
-    for (let key in time) {
-        if (seconds >= time[key]) {
-            let val = Math.floor(seconds/time[key]);
-            console.log(val)
-            res.push(val += val > 1 ? ' ' + key + 's' : ' ' + key);
-            seconds = seconds % time[key];
+function isInteresting(number, awesomePhrases) {
+    let interesting = 0
+    let allNumbersZero = false
+    let theSame = false
+    let increasing = false
+    let decrementing = false
+    let palindrom = false
+    let s = String(number)
+    let inArray = false
+    if (s.length < 3 && number < 100 && number >=98) {return interesting =  1}
+    if (s.length < 3 || number < 98 || number > 1000000000) {return interesting = 0}
+
+    function allZero(n) {
+        let sNumber = String(n)
+        if (sNumber.length > 2) {
+            let digits = 0
+            for (let i = 1; i < sNumber.length; i++) {
+                if (sNumber[i] === '0') {
+                    digits += 1
+                }
+            }
+            if (digits === sNumber.length - 1) {
+                allNumbersZero = true
+            } else allNumbersZero = false
         }
     }
-    console.log(res)
-    return res.length > 1 ? res.join(', ').replace(/,([^,]*)$/,' and'+'$1') : res[0]
+
+    function theSameNumber(n) {
+        let sNumber = String(n)
+        let letters = 0
+        for (let i = 1; i < sNumber.length; i++) {
+            if (sNumber[i] === sNumber[0]) {
+                letters += 1
+            }
+            if (letters === sNumber.length - 1) {
+                theSame = true
+            }
+        }
+    }
+
+    function incrementing(n) {
+        let sNumber = String(n)
+        let l = sNumber.length
+        let worldLength = 0
+        for (let i = 0; i < sNumber.length; i++) {
+            // console.log(Number(sNumber[i])+1)
+            if (Number(sNumber[i]) + 1 === Number(sNumber[i + 1])) {
+                worldLength += 1
+            }
+        }
+
+        if (sNumber[l - 1] === '0' && sNumber[l - 2] === '9') {
+            worldLength += 1
+        }
+        if (worldLength === sNumber.length - 1) {
+            increasing = true
+        }
+        // console.log('worldLength= ' + worldLength)
+        // console.log('sNumber.length= ' + sNumber.length)
+    }
+
+    function decrement(n) {
+        let sNumber = String(n)
+        let l = sNumber.length
+        let worldLength = 0
+        for (let i = 0; i < sNumber.length; i++) {
+            // console.log(Number(sNumber[i])+1)
+            if (Number(sNumber[i]) - 1 === Number(sNumber[i + 1])) {
+                worldLength += 1
+            }
+        }
+        if (sNumber[l - 1] === '0' && sNumber[l - 2] !== '1') {
+            decrementing = false
+        }
+        if (worldLength === sNumber.length-1) {
+            decrementing = true
+        }
+        // console.log('worldLength= ' + worldLength)
+        // console.log('sNumber.length= ' + sNumber.length)
+    }
+
+    function palindromFunc(n) {
+        let word = String(n)
+        let reversed_word = word.split('').reverse().join('')
+        if (word === reversed_word) {
+            palindrom = true
+        } else (
+            palindrom = false
+        )
+    }
+
+    function arraySearch(n, arr) {
+        for (let i=0; i<arr.length; i++) {
+            if (n === arr[i]) {
+                inArray = true
+            }
+        }
+    }
+
+    //======== looking for nearest 2 miles =============
+    for (let i = 0; i <= 2; i++) {
+        let newNumber = number
+        allZero(newNumber + i)
+        theSameNumber(newNumber + i)
+        incrementing(newNumber + i)
+        decrement(newNumber+i)
+        palindromFunc(newNumber+i)
+        arraySearch(newNumber + i, awesomePhrases)
+        // console.log('allNumbersZero= ' + allNumbersZero)
+        // console.log('theSame= ' + theSame)
+        // console.log('i= ' + i)
+        // console.log(inArray)
+        if (i === 0 && allNumbersZero === true || i === 0 && theSame === true ||
+            i === 0 && increasing === true || i===0 && decrementing === true || i===0 && palindrom === true
+            || i===0 && inArray === true ) {
+            return interesting = 2
+        }
+        if (i > 0 && allNumbersZero === true || i > 0 && theSame === true ||
+            i > 0 && increasing === true || i>0 && decrementing === true|| i>0 && palindrom === true
+            || i>0 && inArray === true) {
+            return interesting = 1
+        }
+    }
+    return interesting
 }
 
-console.log (formatDuration(2620))
+console.log(isInteresting(98, [1337, 256]))
