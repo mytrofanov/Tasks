@@ -2663,130 +2663,162 @@ function TheBiggest() {
 // isInteresting(1336, [1337, 256]); // 1
 // isInteresting(1337, [1337, 256]); // 2
 
-function isInteresting(number, awesomePhrases) {
-    let interesting = 0
-    let allNumbersZero = false
-    let theSame = false
-    let increasing = false
-    let decrementing = false
-    let palindrom = false
-    let s = String(number)
-    let inArray = false
-    if (s.length < 3 && number < 100 && number >=98) {return interesting =  1}
-    if (s.length < 3 || number < 98 || number > 1000000000) {return interesting = 0}
+// function isInteresting(number, awesomePhrases) {
+//     let interesting = 0
+//     let allNumbersZero = false
+//     let theSame = false
+//     let increasing = false
+//     let decrementing = false
+//     let palindrom = false
+//     let s = String(number)
+//     let inArray = false
+//     if (s.length < 3 && number < 100 && number >=98) {return interesting =  1}
+//     if (s.length < 3 || number < 98 || number > 1000000000) {return interesting = 0}
+//
+//     function allZero(n) {
+//         let sNumber = String(n)
+//         if (sNumber.length > 2) {
+//             let digits = 0
+//             for (let i = 1; i < sNumber.length; i++) {
+//                 if (sNumber[i] === '0') {
+//                     digits += 1
+//                 }
+//             }
+//             if (digits === sNumber.length - 1) {
+//                 allNumbersZero = true
+//             } else allNumbersZero = false
+//         }
+//     }
+//
+//     function theSameNumber(n) {
+//         let sNumber = String(n)
+//         let letters = 0
+//         for (let i = 1; i < sNumber.length; i++) {
+//             if (sNumber[i] === sNumber[0]) {
+//                 letters += 1
+//             }
+//             if (letters === sNumber.length - 1) {
+//                 theSame = true
+//             }
+//         }
+//     }
+//
+//     function incrementing(n) {
+//         let sNumber = String(n)
+//         let l = sNumber.length
+//         let worldLength = 0
+//         for (let i = 0; i < sNumber.length; i++) {
+//             // console.log(Number(sNumber[i])+1)
+//             if (Number(sNumber[i]) + 1 === Number(sNumber[i + 1])) {
+//                 worldLength += 1
+//             }
+//         }
+//
+//         if (sNumber[l - 1] === '0' && sNumber[l - 2] === '9') {
+//             worldLength += 1
+//         }
+//         if (worldLength === sNumber.length - 1) {
+//             increasing = true
+//         }
+//         // console.log('worldLength= ' + worldLength)
+//         // console.log('sNumber.length= ' + sNumber.length)
+//     }
+//
+//     function decrement(n) {
+//         let sNumber = String(n)
+//         let l = sNumber.length
+//         let worldLength = 0
+//         for (let i = 0; i < sNumber.length; i++) {
+//             // console.log(Number(sNumber[i])+1)
+//             if (Number(sNumber[i]) - 1 === Number(sNumber[i + 1])) {
+//                 worldLength += 1
+//             }
+//         }
+//         if (sNumber[l - 1] === '0' && sNumber[l - 2] !== '1') {
+//             decrementing = false
+//         }
+//         if (worldLength === sNumber.length-1) {
+//             decrementing = true
+//         }
+//         // console.log('worldLength= ' + worldLength)
+//         // console.log('sNumber.length= ' + sNumber.length)
+//     }
+//
+//     function palindromFunc(n) {
+//         let word = String(n)
+//         let reversed_word = word.split('').reverse().join('')
+//         if (word === reversed_word) {
+//             palindrom = true
+//         } else (
+//             palindrom = false
+//         )
+//     }
+//
+//     function arraySearch(n, arr) {
+//         for (let i=0; i<arr.length; i++) {
+//             if (n === arr[i]) {
+//                 inArray = true
+//             }
+//         }
+//     }
+//
+//     //======== looking for nearest 2 miles =============
+//     for (let i = 0; i <= 2; i++) {
+//         let newNumber = number
+//         allZero(newNumber + i)
+//         theSameNumber(newNumber + i)
+//         incrementing(newNumber + i)
+//         decrement(newNumber+i)
+//         palindromFunc(newNumber+i)
+//         arraySearch(newNumber + i, awesomePhrases)
+//         // console.log('allNumbersZero= ' + allNumbersZero)
+//         // console.log('theSame= ' + theSame)
+//         // console.log('i= ' + i)
+//         // console.log(inArray)
+//         if (i === 0 && allNumbersZero === true || i === 0 && theSame === true ||
+//             i === 0 && increasing === true || i===0 && decrementing === true || i===0 && palindrom === true
+//             || i===0 && inArray === true ) {
+//             return interesting = 2
+//         }
+//         if (i > 0 && allNumbersZero === true || i > 0 && theSame === true ||
+//             i > 0 && increasing === true || i>0 && decrementing === true|| i>0 && palindrom === true
+//             || i>0 && inArray === true) {
+//             return interesting = 1
+//         }
+//     }
+//     return interesting
+// }
+//
+// console.log(isInteresting(98, [1337, 256]))
 
-    function allZero(n) {
-        let sNumber = String(n)
-        if (sNumber.length > 2) {
-            let digits = 0
-            for (let i = 1; i < sNumber.length; i++) {
-                if (sNumber[i] === '0') {
-                    digits += 1
-                }
-            }
-            if (digits === sNumber.length - 1) {
-                allNumbersZero = true
-            } else allNumbersZero = false
-        }
-    }
-
-    function theSameNumber(n) {
-        let sNumber = String(n)
-        let letters = 0
-        for (let i = 1; i < sNumber.length; i++) {
-            if (sNumber[i] === sNumber[0]) {
-                letters += 1
-            }
-            if (letters === sNumber.length - 1) {
-                theSame = true
-            }
-        }
-    }
-
-    function incrementing(n) {
-        let sNumber = String(n)
-        let l = sNumber.length
-        let worldLength = 0
-        for (let i = 0; i < sNumber.length; i++) {
-            // console.log(Number(sNumber[i])+1)
-            if (Number(sNumber[i]) + 1 === Number(sNumber[i + 1])) {
-                worldLength += 1
-            }
-        }
-
-        if (sNumber[l - 1] === '0' && sNumber[l - 2] === '9') {
-            worldLength += 1
-        }
-        if (worldLength === sNumber.length - 1) {
-            increasing = true
-        }
-        // console.log('worldLength= ' + worldLength)
-        // console.log('sNumber.length= ' + sNumber.length)
-    }
-
-    function decrement(n) {
-        let sNumber = String(n)
-        let l = sNumber.length
-        let worldLength = 0
-        for (let i = 0; i < sNumber.length; i++) {
-            // console.log(Number(sNumber[i])+1)
-            if (Number(sNumber[i]) - 1 === Number(sNumber[i + 1])) {
-                worldLength += 1
-            }
-        }
-        if (sNumber[l - 1] === '0' && sNumber[l - 2] !== '1') {
-            decrementing = false
-        }
-        if (worldLength === sNumber.length-1) {
-            decrementing = true
-        }
-        // console.log('worldLength= ' + worldLength)
-        // console.log('sNumber.length= ' + sNumber.length)
-    }
-
-    function palindromFunc(n) {
-        let word = String(n)
-        let reversed_word = word.split('').reverse().join('')
-        if (word === reversed_word) {
-            palindrom = true
-        } else (
-            palindrom = false
-        )
-    }
-
-    function arraySearch(n, arr) {
-        for (let i=0; i<arr.length; i++) {
-            if (n === arr[i]) {
-                inArray = true
-            }
-        }
-    }
-
-    //======== looking for nearest 2 miles =============
-    for (let i = 0; i <= 2; i++) {
-        let newNumber = number
-        allZero(newNumber + i)
-        theSameNumber(newNumber + i)
-        incrementing(newNumber + i)
-        decrement(newNumber+i)
-        palindromFunc(newNumber+i)
-        arraySearch(newNumber + i, awesomePhrases)
-        // console.log('allNumbersZero= ' + allNumbersZero)
-        // console.log('theSame= ' + theSame)
-        // console.log('i= ' + i)
-        // console.log(inArray)
-        if (i === 0 && allNumbersZero === true || i === 0 && theSame === true ||
-            i === 0 && increasing === true || i===0 && decrementing === true || i===0 && palindrom === true
-            || i===0 && inArray === true ) {
-            return interesting = 2
-        }
-        if (i > 0 && allNumbersZero === true || i > 0 && theSame === true ||
-            i > 0 && increasing === true || i>0 && decrementing === true|| i>0 && palindrom === true
-            || i>0 && inArray === true) {
-            return interesting = 1
-        }
-    }
-    return interesting
+// =============== найти все ключи объекта ==============
+let obj2 = {
+    a: {
+        b: 2,
+        q: [0, 3, 4]
+    },
+    x: true,
+    d: {f: null}
 }
 
-console.log(isInteresting(98, [1337, 256]))
+let arr = [];
+let initialObj = {};
+
+function getKeys(obj, parentK=''){
+    initialObj = arr.length === 0 ? obj: initialObj;
+    const entries = Object.entries(obj);
+    for(let i=0; i<entries.length; i++) {
+        const key = entries[i][0];
+        const val = entries[i][1];
+        const isRootElement = initialObj.hasOwnProperty(key);
+        parentK = isRootElement ? key: parentK+'.'+key;
+        arr.push(parentK)
+        if(typeof val === 'object' && val!==null && !Array.isArray(val)){
+            getKeys(val, parentK);
+        }
+    }
+}
+
+getKeys(obj2)
+
+console.log('arr final---', arr);
