@@ -2791,7 +2791,7 @@ function TheBiggest() {
 //
 // console.log(isInteresting(98, [1337, 256]))
 
-// =============== найти все ключи объекта ==============
+// =============== найти все ключи объекта + данные массива в ключи ==============
 let obj2 = {
     a: {
         b: 2,
@@ -2810,9 +2810,16 @@ function getKeys(obj, parentK=''){
     for(let i=0; i<entries.length; i++) {
         const key = entries[i][0];
         const val = entries[i][1];
-        const isRootElement = initialObj.hasOwnProperty(key);
+        const isRootElement = initialObj.hasOwnProperty(key);  //boolean
         parentK = isRootElement ? key: parentK+'.'+key;
-        arr.push(parentK)
+        if (Array.isArray(val)) {
+            val.forEach(element => {
+                parentK = isRootElement ? key: parentK+'.'+element;
+                arr.push(parentK)
+            })
+            parentK = null
+        }
+        parentK !== null && arr.push(parentK)
         if(typeof val === 'object' && val!==null && !Array.isArray(val)){
             getKeys(val, parentK);
         }
