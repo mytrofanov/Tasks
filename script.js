@@ -459,3 +459,39 @@ function TheBiggest() {
 // }
 //
 // console.log(result)
+
+//Перебрать все ключи обьекта
+let arr = [];
+let initialObj = {};
+
+function getKeys(obj, parentK=''){
+    initialObj = arr.length === 0 ? obj: initialObj;
+    const entries = Object.entries(obj);
+    for(let i=0; i<entries.length; i++) {
+        const key = entries[i][0];
+        const val = entries[i][1];
+        const isRootElement = initialObj.hasOwnProperty(key);  //boolean
+        parentK = isRootElement ? key: parentK+'.'+key;
+        if (Array.isArray(val)) {
+            val.forEach(element => {
+                parentK = isRootElement ? key: parentK+'.'+element;
+                arr.push(parentK)
+            })
+            parentK = null
+        }
+        parentK !== null && arr.push(parentK)
+        if(typeof val === 'object' && val!==null && !Array.isArray(val)){
+            getKeys(val, parentK);
+        }
+    }
+}
+
+getKeys(obj2)
+
+console.log('arr final---', arr);
+
+//Вернуть противоположное себе значение
+// const test = (x) => {
+//   return (x !== x)
+// }
+// console.log(test(NaN))
