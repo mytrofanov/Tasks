@@ -461,37 +461,74 @@ function TheBiggest() {
 // console.log(result)
 
 //Перебрать все ключи обьекта
-let arr = [];
-let initialObj = {};
-
-function getKeys(obj, parentK=''){
-    initialObj = arr.length === 0 ? obj: initialObj;
-    const entries = Object.entries(obj);
-    for(let i=0; i<entries.length; i++) {
-        const key = entries[i][0];
-        const val = entries[i][1];
-        const isRootElement = initialObj.hasOwnProperty(key);  //boolean
-        parentK = isRootElement ? key: parentK+'.'+key;
-        if (Array.isArray(val)) {
-            val.forEach(element => {
-                parentK = isRootElement ? key: parentK+'.'+element;
-                arr.push(parentK)
-            })
-            parentK = null
-        }
-        parentK !== null && arr.push(parentK)
-        if(typeof val === 'object' && val!==null && !Array.isArray(val)){
-            getKeys(val, parentK);
-        }
-    }
-}
-
-getKeys(obj2)
-
-console.log('arr final---', arr);
+// let arr = [];
+// let initialObj = {};
+//
+// function getKeys(obj, parentK=''){
+//     initialObj = arr.length === 0 ? obj: initialObj;
+//     const entries = Object.entries(obj);
+//     for(let i=0; i<entries.length; i++) {
+//         const key = entries[i][0];
+//         const val = entries[i][1];
+//         const isRootElement = initialObj.hasOwnProperty(key);  //boolean
+//         parentK = isRootElement ? key: parentK+'.'+key;
+//         if (Array.isArray(val)) {
+//             val.forEach(element => {
+//                 parentK = isRootElement ? key: parentK+'.'+element;
+//                 arr.push(parentK)
+//             })
+//             parentK = null
+//         }
+//         parentK !== null && arr.push(parentK)
+//         if(typeof val === 'object' && val!==null && !Array.isArray(val)){
+//             getKeys(val, parentK);
+//         }
+//     }
+// }
+//
+// getKeys(obj2)
+//
+// console.log('arr final---', arr);
 
 //Вернуть противоположное себе значение
 // const test = (x) => {
 //   return (x !== x)
 // }
 // console.log(test(NaN))
+
+// Приведение объекта в примитив (несколько строк)
+// let user = {
+//     name: "John",
+//     money: 1000,
+//
+//     [Symbol.toPrimitive](hint) {
+//         alert(`hint: ${hint}`);
+//         return hint == "string" ? `{name: "${this.name}"}` : this.money;
+//     }
+// };
+//
+// // демонстрация результатов преобразований:
+// alert(user); // hint: string -> {name: "John"}
+// alert(+user); // hint: number -> 1000
+// alert(user + 500); // hint: default -> 1500
+// Приведение объекта в примитив (несколько строк) теперь методами toString и valueOf
+// let user = {
+//     name: "John",
+//     secondName: "Ban",
+//     money: 1000,
+//
+//     // для хинта равного "string"
+//     toString() {
+//         return `{name: "${this.name}", secondName: "${this.secondName}"}`;
+//     },
+//
+//     // для хинта равного "number" или "default"
+//     valueOf() {
+//         return this.money;
+//     }
+//
+// };
+// console.log(user)
+// alert(user); // toString -> {name: "John"}
+// alert(+user); // valueOf -> 1000
+// alert(user + 500); // valueOf -> 1500
